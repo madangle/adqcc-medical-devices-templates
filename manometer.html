@@ -5,380 +5,513 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Manometer </title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
     <style>
-        table.table{
+        *{
+            font-family: 'Roboto', sans-serif;
+        }
+        .manometer-tables p{
+            margin: 0px;
+        }
+        .manometer-tables table.table{
             margin-bottom: 0px;
         }
-        table tr td {
-            max-width: 100px;
-        }
-        table tr td input {
+        .manometer-tables table tr td input {
             max-width: 100%;
         }
-        table tr td input:focus,
-        table tr td input:active {
-            /* outline: none; */
-        }
-        @media print{
-            table tr td input {
-                border: 0px;
-            }
-        }
+        /* .manometer-tables table tr td input:focus,
+        .manometer-tables table tr td input:active {
+            outline: none;
+        } */
         .application-details-table{
-            width: 75%;
+            width: 90%;
             margin: 25px auto;
             border: 2px solid black;
+        }
+        .application-details-table table tr td:nth-child(2){
+            width: 70%;
+        }
+        .application-details-table table tr td input{
+            width: 100%;
         }
         .batch-details-table {
             margin:15px;
         }
+        .test-data-table table tr td input {
+            width: 100%;
+        }
+        .test-data-table table tr td {
+            border: 1px solid black;
+        }
+        .remarks-table table textarea{
+            line-height: 4ch;
+            background-image: linear-gradient(transparent, transparent calc(4ch - 1px), #000000 0px);
+            background-size: 100% 4ch;
+            border: 0px;
+        }
+        .sign-table{
+            border: 2px solid black;
+        }
+        .sign-table tr td:nth-child(2){
+            border-right: 1px solid black;
+        }
+        input.border-bottem-dotted-line{
+            border: 0px; 
+            border-bottom: 1px dashed black;
+        }
+        @media print{
+            .hide-in-pdf{
+                display: none;
+            }
+            .manometer-tables table tr td, 
+            .manometer-tables table tr td input,
+            .manometer-tables table tr td textarea, 
+            .manometer-tables table tr td p,
+            .manometer-tables table tr td h6 {
+                font-size: 14px;
+                line-height: 16px;
+                margin-bottom: 0px;
+            }
+            .manometer-tables table tr td input {
+                border: 0px;
+            }
+            /* .manometer-tables table tr td input.border-bottem-dotted-line{
+                border: 0px; 
+                border-bottom: 1px dashed black;
+            } */
+            h3,h4,h5{
+                margin: 0px;
+                /* font-size: 16px;
+                text-align:center; */
+            }
+            .application-details-table{
+                margin-top: 5px;
+            }
+            .application-details-table table tr td {
+                padding-top: 2px;
+                padding-bottom: 2px;
+            }
+            .batch-details-table table tr td {
+                padding-top: 2px;
+                padding-bottom: 2px;
+            }
+            .sample-source-table table tr td {
+                padding-top: 2px;
+                padding-bottom: 2px;
+            }
+            .visual-test-table table tr td {
+                padding-top: 2px;
+                padding-bottom: 2px;
+            }
+            .visual-test-table table tr td:first-child {
+                width: 33%;
+            }
+            .test-data-table table tr td{
+                padding-top: 0px;
+                padding-bottom: 2px ;
+            }
+            .remarks-table table tr td{
+                padding-top: 0px;
+                padding-bottom: 0px;
+            }
+            .sign-table table tr td{
+                padding-top: 2px;
+                padding-bottom: 2px;
+            }  
+        }
     </style>
 </head>
 <body>
-    <div class="container">
-        <!--  APPLICANT DETAILS TABLE -->
-        <div class="application-details-table">
-            <table class="table table-borderless">
-                <tr>
-                    <td><b>Applicant Name:</b> </td>
-                    <td> <input type="text" name="" id="" style="border: 0px; border-bottom: 1px dashed black;"> </td>
-                </tr>
-                <tr>
-                    <td><b>Manometer Brand Name:</b> </td>
-                    <td> <input type="text" name="" id="" style="border: 0px; border-bottom: 1px dashed black;"> </td>
-                </tr>
-            </table>
-        </div>
-        
-        <!--  BATCH DETAILS TABLE -->
-        <div class="batch-details-table">
-            <table class="table table-borderless" style="max-width: 500px;margin: 0 auto;">
-                <tr>
-                    <td>No.</td>
-                    <td style="border:1px solid black">LMN </td>
-                    <td style="border:1px solid black">B <input type="text" name="" id="" style="border: 0px; border-bottom: 1px dashed black;max-width: 75%;"> </td>
-                    <td style="border:1px solid black">201 <input type="text" name="" id="" style="border: 0px; border-bottom: 1px dashed black;max-width: 75%;"> </td>
-                </tr>
-            </table>
-        </div>
-        
-        <!--  SAMPLE SOURCE TABLE -->
-        <div class="sample-source-table">
-            <table class="table table-borderless">
-                <tr>
-                    <td rowspan="4" style="width:25%">
-                        <h6>* Sample Source:</h6>
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        <input type="checkbox" name="" id=""> Suppliers                        
-                    </td>
-                    <td></td>
-                </tr>
-                <tr>
-                    <td>
-                        <input type="checkbox" name="" id=""> Market 
-                    </td>
-                    <td>
-                        (Purchase Order No. <input type="text" name="" id="" style="border: 0px; border-bottom: 1px dashed black;">)
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        <input type="checkbox" name="" id=""> Customs
-                    </td>
-                    <td>
-                        (Customs Clearance No. <input type="text" name="" id="" style="border: 0px; border-bottom: 1px dashed black;">)
-                    </td>
-                </tr>
-            </table>
-        </div>
-
-        <!--  VISUAL TEST TABLE -->
-        <div class="visual-test-table">
-            <table class="table table-borderless">
-                <tr>
-                    <td colspan="3" style="width:25%">
-                        <h6>* Visual Test:</h6>
-                    </td>
-                </tr>
-                <tr>
-                    <td style="width:25%">
-                        Manometer Type
-                    </td>
-                    <td>
-                        <input type="checkbox" name="" id=""> Mechanical
-                    </td>
-                    <td>
-                        <input type="checkbox" name="" id=""> Automated
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        Defected
-                    </td>
-                    <td>
-                        <input type="checkbox" name="" id=""> No
-                    </td>
-                    <td>
-                        <input type="checkbox" name="" id=""> Yes
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        Pressure Reducing Valve
-                    </td>
-                    <td>
-                        <input type="checkbox" name="" id=""> Working
-                    </td>
-                    <td>
-                        <input type="checkbox" name="" id=""> Not working
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        Sample Size
-                    </td>
-                    <td colspan="2">
-                        <input type="text" name="" id="" style="border: 0px; border-bottom: 1px dashed black;"> 
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        Verification
-                    </td>
-                    <td>
-                        <input type="checkbox" name="" id=""> Initial (MPE*=+- 3mmHg)
-                    </td>
-                    <td>
-                        <input type="checkbox" name="" id=""> Initial (MPE*=+- 4mmHg)
-                    </td>
-                </tr>
-            </table>
-        </div>
-
-        <!--  TEST DATA TABLE -->
-        <div class="test-data-table">
-            <table class="table table-bordered">
-                <thead>
-                    <tr>
-                        <td colspan="2">Serial No.</td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                    </tr>
-                    <tr>
-                        <td colspan="2">Test Point</td>
-                        <td>Error</td>
-                        <td>Error</td>
-                        <td>Error</td>
-                        <td>Error</td>
-                        <td>Error</td>
-                        <td>Error</td>
-                        <td>Error</td>
-                        <td>Error</td>
-                        <td>Error</td>
-                        <td>Error</td>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td colspan="2">0 mmHg</td>
-                        <td> <input type="text" name="" id=""> </td>
-                        <td> <input type="text" name="" id=""></td>
-                        <td><input type="text" name="" id=""></td>
-                        <td><input type="text" name="" id=""></td>
-                        <td><input type="text" name="" id=""></td>
-                        <td><input type="text" name="" id=""></td>
-                        <td><input type="text" name="" id=""></td>
-                        <td><input type="text" name="" id=""></td>
-                        <td><input type="text" name="" id=""></td>
-                        <td><input type="text" name="" id=""></td>
-                    </tr>
-                    <tr>
-                        <td colspan="2">50 mmHg</td>
-                        <td> <input type="text" name="" id=""> </td>
-                        <td> <input type="text" name="" id=""></td>
-                        <td><input type="text" name="" id=""></td>
-                        <td><input type="text" name="" id=""></td>
-                        <td><input type="text" name="" id=""></td>
-                        <td><input type="text" name="" id=""></td>
-                        <td><input type="text" name="" id=""></td>
-                        <td><input type="text" name="" id=""></td>
-                        <td><input type="text" name="" id=""></td>
-                        <td><input type="text" name="" id=""></td>
-                    </tr>
-                    <tr>
-                        <td colspan="2">100 mmHg</td>
-                        <td> <input type="text" name="" id=""> </td>
-                        <td> <input type="text" name="" id=""></td>
-                        <td><input type="text" name="" id=""></td>
-                        <td><input type="text" name="" id=""></td>
-                        <td><input type="text" name="" id=""></td>
-                        <td><input type="text" name="" id=""></td>
-                        <td><input type="text" name="" id=""></td>
-                        <td><input type="text" name="" id=""></td>
-                        <td><input type="text" name="" id=""></td>
-                        <td><input type="text" name="" id=""></td>
-                    </tr>
-                    <tr>
-                        <td colspan="2">150 mmHg</td>
-                        <td> <input type="text" name="" id=""> </td>
-                        <td> <input type="text" name="" id=""></td>
-                        <td><input type="text" name="" id=""></td>
-                        <td><input type="text" name="" id=""></td>
-                        <td><input type="text" name="" id=""></td>
-                        <td><input type="text" name="" id=""></td>
-                        <td><input type="text" name="" id=""></td>
-                        <td><input type="text" name="" id=""></td>
-                        <td><input type="text" name="" id=""></td>
-                        <td><input type="text" name="" id=""></td>
-                    </tr>
-                    <tr>
-                        <td colspan="2">200 mmHg</td>
-                        <td> <input type="text" name="" id=""> </td>
-                        <td> <input type="text" name="" id=""></td>
-                        <td><input type="text" name="" id=""></td>
-                        <td><input type="text" name="" id=""></td>
-                        <td><input type="text" name="" id=""></td>
-                        <td><input type="text" name="" id=""></td>
-                        <td><input type="text" name="" id=""></td>
-                        <td><input type="text" name="" id=""></td>
-                        <td><input type="text" name="" id=""></td>
-                        <td><input type="text" name="" id=""></td>
-                    </tr>
-                    <tr>
-                        <td colspan="2">250 mmHg</td>
-                        <td> <input type="text" name="" id=""> </td>
-                        <td> <input type="text" name="" id=""></td>
-                        <td><input type="text" name="" id=""></td>
-                        <td><input type="text" name="" id=""></td>
-                        <td><input type="text" name="" id=""></td>
-                        <td><input type="text" name="" id=""></td>
-                        <td><input type="text" name="" id=""></td>
-                        <td><input type="text" name="" id=""></td>
-                        <td><input type="text" name="" id=""></td>
-                        <td><input type="text" name="" id=""></td>
-                    </tr>
-                    <tr>
-                        <td rowspan="6">Air Leakage Test</td>
-                        <td rowspan="3">Pressure Reduction Rate** at P100 (mmHg/min)</td>
-                        <td> <input type="text" name="" id=""> </td>
-                        <td> <input type="text" name="" id=""></td>
-                        <td><input type="text" name="" id=""></td>
-                        <td><input type="text" name="" id=""></td>
-                        <td><input type="text" name="" id=""></td>
-                        <td><input type="text" name="" id=""></td>
-                        <td><input type="text" name="" id=""></td>
-                        <td><input type="text" name="" id=""></td>
-                        <td><input type="text" name="" id=""></td>
-                        <td><input type="text" name="" id=""></td>
-                    </tr>
-                    <tr>
-                        <td> <input type="text" name="" id=""> </td>
-                        <td> <input type="text" name="" id=""></td>
-                        <td><input type="text" name="" id=""></td>
-                        <td><input type="text" name="" id=""></td>
-                        <td><input type="text" name="" id=""></td>
-                        <td><input type="text" name="" id=""></td>
-                        <td><input type="text" name="" id=""></td>
-                        <td><input type="text" name="" id=""></td>
-                        <td><input type="text" name="" id=""></td>
-                        <td><input type="text" name="" id=""></td>
-                    </tr>
-                    <tr>
-                        <td> <input type="text" name="" id=""> </td>
-                        <td> <input type="text" name="" id=""></td>
-                        <td><input type="text" name="" id=""></td>
-                        <td><input type="text" name="" id=""></td>
-                        <td><input type="text" name="" id=""></td>
-                        <td><input type="text" name="" id=""></td>
-                        <td><input type="text" name="" id=""></td>
-                        <td><input type="text" name="" id=""></td>
-                        <td><input type="text" name="" id=""></td>
-                        <td><input type="text" name="" id=""></td>
-                    </tr>
-                    <tr>
-                        <td rowspan="3">Pressure Reduction Rate** at P250 (mmHg/min)</td>
-                        <td> <input type="text" name="" id=""> </td>
-                        <td> <input type="text" name="" id=""></td>
-                        <td><input type="text" name="" id=""></td>
-                        <td><input type="text" name="" id=""></td>
-                        <td><input type="text" name="" id=""></td>
-                        <td><input type="text" name="" id=""></td>
-                        <td><input type="text" name="" id=""></td>
-                        <td><input type="text" name="" id=""></td>
-                        <td><input type="text" name="" id=""></td>
-                        <td><input type="text" name="" id=""></td>
-                    </tr>
-                    <tr>
-                        <td> <input type="text" name="" id=""> </td>
-                        <td> <input type="text" name="" id=""></td>
-                        <td><input type="text" name="" id=""></td>
-                        <td><input type="text" name="" id=""></td>
-                        <td><input type="text" name="" id=""></td>
-                        <td><input type="text" name="" id=""></td>
-                        <td><input type="text" name="" id=""></td>
-                        <td><input type="text" name="" id=""></td>
-                        <td><input type="text" name="" id=""></td>
-                        <td><input type="text" name="" id=""></td>
-                    </tr>
-                    <tr>
-                        <td> <input type="text" name="" id=""> </td>
-                        <td> <input type="text" name="" id=""></td>
-                        <td><input type="text" name="" id=""></td>
-                        <td><input type="text" name="" id=""></td>
-                        <td><input type="text" name="" id=""></td>
-                        <td><input type="text" name="" id=""></td>
-                        <td><input type="text" name="" id=""></td>
-                        <td><input type="text" name="" id=""></td>
-                        <td><input type="text" name="" id=""></td>
-                        <td><input type="text" name="" id=""></td>
-                    </tr>
-                    <tr>
-                        <td colspan="2"> Pass / Fail </td>
-                        <td> <input type="text" name="" id=""> </td>
-                        <td> <input type="text" name="" id=""></td>
-                        <td><input type="text" name="" id=""></td>
-                        <td><input type="text" name="" id=""></td>
-                        <td><input type="text" name="" id=""></td>
-                        <td><input type="text" name="" id=""></td>
-                        <td><input type="text" name="" id=""></td>
-                        <td><input type="text" name="" id=""></td>
-                        <td><input type="text" name="" id=""></td>
-                        <td><input type="text" name="" id=""></td>
-                    </tr>
-                </tbody>
-            </table>
-        </div>
-        
-        <!--  REMARKS TABLE -->
-        <div class="remarks-tab">
+    <header>
+        <div class="container">
             <table class="table">
                 <tr>
                     <td>
-                        <p>*MPE: Maximum Permissible Error</p>
-                        <p>** Pressure Reduction Rate: Measure the pressure after 5 minutes and calculate the Pressure reduction rate by dividing the difference over 5. Pressure reduction rate should not exceed 4mmHg/min for the mechanical and 6mmHg/min for the automated</p>
+                        <h4 style="margin: 25px 0;">Pharma Verification Report For Blood Pressure Manometers</h3>
                     </td>
-                </tr>
-                <tr>
-                    <td>
-                        <p><b>Remarks:</b></p>
-                        <input type="text" name="" id="" style="word-break: break-word; width: 100%">
+                    <td style="text-align: center;">
+                        <img src="./assets/images/adqcc-logo.png" alt="">
+                        <h6>Central Testing Laboratories</h6>
                     </td>
                 </tr>
             </table>
         </div>
-    </div>
+    </header>
+    <main>
+        <div class="container manometer-tables">
+            <!--  APPLICANT DETAILS TABLE -->
+            <div class="application-details-table">
+                <table class="table table-borderless">
+                    <tr>
+                        <td><b>Applicant Name:</b> </td>
+                        <td> <input type="text" name="" id="" class="border-bottem-dotted-line"> </td>
+                    </tr>
+                    <tr>
+                        <td><b>Manometer Brand Name:</b> </td>
+                        <td> <input type="text" name="" id="" class="border-bottem-dotted-line"> </td>
+                    </tr>
+                </table>
+            </div>
+            
+            <!--  BATCH DETAILS TABLE -->
+            <div class="batch-details-table">
+                <table class="table table-borderless" style="max-width: 500px;margin: 0 auto;">
+                    <tr>
+                        <td>No.</td>
+                        <td style="border:1px solid black">LMN </td>
+                        <td style="border:1px solid black">B <input type="text" name="" id="" style="border: 0px; border-bottom: 1px dashed black;max-width: 75%;"> </td>
+                        <td style="border:1px solid black">201 <input type="text" name="" id="" style="border: 0px; border-bottom: 1px dashed black;max-width: 75%;"> </td>
+                    </tr>
+                </table>
+            </div>
+            
+            <!--  SAMPLE SOURCE TABLE -->
+            <div class="sample-source-table">
+                <table class="table table-borderless">
+                    <tr>
+                        <td rowspan="4" style="width:25%">
+                            <h6>* Sample Source:</h6>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <input type="checkbox" name="" id=""> Suppliers                        
+                        </td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <input type="checkbox" name="" id=""> Market 
+                        </td>
+                        <td>
+                            (Purchase Order No. <input type="text" name="" id="" class="border-bottem-dotted-line">)
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <input type="checkbox" name="" id=""> Customs
+                        </td>
+                        <td>
+                            (Customs Clearance No. <input type="text" name="" id="" class="border-bottem-dotted-line">)
+                        </td>
+                    </tr>
+                </table>
+            </div>
+    
+            <!--  VISUAL TEST TABLE -->
+            <div class="visual-test-table">
+                <table class="table table-borderless">
+                    <tr>
+                        <td colspan="3" style="width:25%">
+                            <h6>* Visual Test:</h6>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td style="width:25%">
+                            Manometer Type
+                        </td>
+                        <td>
+                            <input type="checkbox" name="" id=""> Mechanical
+                        </td>
+                        <td>
+                            <input type="checkbox" name="" id=""> Automated
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            Defected
+                        </td>
+                        <td>
+                            <input type="checkbox" name="" id=""> No
+                        </td>
+                        <td>
+                            <input type="checkbox" name="" id=""> Yes
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            Pressure Reducing Valve
+                        </td>
+                        <td>
+                            <input type="checkbox" name="" id=""> Working
+                        </td>
+                        <td>
+                            <input type="checkbox" name="" id=""> Not working
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            Sample Size
+                        </td>
+                        <td colspan="2">
+                            <input type="text" name="" id="" class="border-bottem-dotted-line"> 
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            Verification
+                        </td>
+                        <td>
+                            <input type="checkbox" name="" id=""> Initial (MPE*= &#177;3mmHg)
+                        </td>
+                        <td>
+                            <input type="checkbox" name="" id=""> Periodic (MPE*=&#177;4mmHg)
+                        </td>
+                    </tr>
+                </table>
+            </div>
+    
+            <!--  TEST DATA TABLE -->
+            <div class="test-data-table">
+                <table class="table table-bordered">
+                    <thead>
+                        <tr>
+                            <td colspan="2">Serial No.</td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td colspan="2">Test Point</td>
+                            <td>Error</td>
+                            <td>Error</td>
+                            <td>Error</td>
+                            <td>Error</td>
+                            <td>Error</td>
+                            <td>Error</td>
+                            <td>Error</td>
+                            <td>Error</td>
+                            <td>Error</td>
+                            <td>Error</td>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td colspan="2">0 mmHg</td>
+                            <td> <input type="text" name="" id=""> </td>
+                            <td> <input type="text" name="" id=""></td>
+                            <td><input type="text" name="" id=""></td>
+                            <td><input type="text" name="" id=""></td>
+                            <td><input type="text" name="" id=""></td>
+                            <td><input type="text" name="" id=""></td>
+                            <td><input type="text" name="" id=""></td>
+                            <td><input type="text" name="" id=""></td>
+                            <td><input type="text" name="" id=""></td>
+                            <td><input type="text" name="" id=""></td>
+                        </tr>
+                        <tr>
+                            <td colspan="2">50 mmHg</td>
+                            <td> <input type="text" name="" id=""> </td>
+                            <td> <input type="text" name="" id=""></td>
+                            <td><input type="text" name="" id=""></td>
+                            <td><input type="text" name="" id=""></td>
+                            <td><input type="text" name="" id=""></td>
+                            <td><input type="text" name="" id=""></td>
+                            <td><input type="text" name="" id=""></td>
+                            <td><input type="text" name="" id=""></td>
+                            <td><input type="text" name="" id=""></td>
+                            <td><input type="text" name="" id=""></td>
+                        </tr>
+                        <tr>
+                            <td colspan="2">100 mmHg</td>
+                            <td> <input type="text" name="" id=""> </td>
+                            <td> <input type="text" name="" id=""></td>
+                            <td><input type="text" name="" id=""></td>
+                            <td><input type="text" name="" id=""></td>
+                            <td><input type="text" name="" id=""></td>
+                            <td><input type="text" name="" id=""></td>
+                            <td><input type="text" name="" id=""></td>
+                            <td><input type="text" name="" id=""></td>
+                            <td><input type="text" name="" id=""></td>
+                            <td><input type="text" name="" id=""></td>
+                        </tr>
+                        <tr>
+                            <td colspan="2">150 mmHg</td>
+                            <td> <input type="text" name="" id=""> </td>
+                            <td> <input type="text" name="" id=""></td>
+                            <td><input type="text" name="" id=""></td>
+                            <td><input type="text" name="" id=""></td>
+                            <td><input type="text" name="" id=""></td>
+                            <td><input type="text" name="" id=""></td>
+                            <td><input type="text" name="" id=""></td>
+                            <td><input type="text" name="" id=""></td>
+                            <td><input type="text" name="" id=""></td>
+                            <td><input type="text" name="" id=""></td>
+                        </tr>
+                        <tr>
+                            <td colspan="2">200 mmHg</td>
+                            <td> <input type="text" name="" id=""> </td>
+                            <td> <input type="text" name="" id=""></td>
+                            <td><input type="text" name="" id=""></td>
+                            <td><input type="text" name="" id=""></td>
+                            <td><input type="text" name="" id=""></td>
+                            <td><input type="text" name="" id=""></td>
+                            <td><input type="text" name="" id=""></td>
+                            <td><input type="text" name="" id=""></td>
+                            <td><input type="text" name="" id=""></td>
+                            <td><input type="text" name="" id=""></td>
+                        </tr>
+                        <tr>
+                            <td colspan="2">250 mmHg</td>
+                            <td> <input type="text" name="" id=""> </td>
+                            <td> <input type="text" name="" id=""></td>
+                            <td><input type="text" name="" id=""></td>
+                            <td><input type="text" name="" id=""></td>
+                            <td><input type="text" name="" id=""></td>
+                            <td><input type="text" name="" id=""></td>
+                            <td><input type="text" name="" id=""></td>
+                            <td><input type="text" name="" id=""></td>
+                            <td><input type="text" name="" id=""></td>
+                            <td><input type="text" name="" id=""></td>
+                        </tr>
+                        <tr>
+                            <td rowspan="6" style="vertical-align: middle;">Air Leakage Test</td>
+                            <td rowspan="3">Pressure Reduction Rate** at P100 (mmHg/min)</td>
+                            <td> <input type="text" name="" id=""> </td>
+                            <td> <input type="text" name="" id=""></td>
+                            <td><input type="text" name="" id=""></td>
+                            <td><input type="text" name="" id=""></td>
+                            <td><input type="text" name="" id=""></td>
+                            <td><input type="text" name="" id=""></td>
+                            <td><input type="text" name="" id=""></td>
+                            <td><input type="text" name="" id=""></td>
+                            <td><input type="text" name="" id=""></td>
+                            <td><input type="text" name="" id=""></td>
+                        </tr>
+                        <tr>
+                            <td> <input type="text" name="" id=""> </td>
+                            <td> <input type="text" name="" id=""></td>
+                            <td><input type="text" name="" id=""></td>
+                            <td><input type="text" name="" id=""></td>
+                            <td><input type="text" name="" id=""></td>
+                            <td><input type="text" name="" id=""></td>
+                            <td><input type="text" name="" id=""></td>
+                            <td><input type="text" name="" id=""></td>
+                            <td><input type="text" name="" id=""></td>
+                            <td><input type="text" name="" id=""></td>
+                        </tr>
+                        <tr>
+                            <td> <input type="text" name="" id=""> </td>
+                            <td> <input type="text" name="" id=""></td>
+                            <td><input type="text" name="" id=""></td>
+                            <td><input type="text" name="" id=""></td>
+                            <td><input type="text" name="" id=""></td>
+                            <td><input type="text" name="" id=""></td>
+                            <td><input type="text" name="" id=""></td>
+                            <td><input type="text" name="" id=""></td>
+                            <td><input type="text" name="" id=""></td>
+                            <td><input type="text" name="" id=""></td>
+                        </tr>
+                        <tr>
+                            <td rowspan="3">Pressure Reduction Rate** at P250 (mmHg/min)</td>
+                            <td> <input type="text" name="" id=""> </td>
+                            <td> <input type="text" name="" id=""></td>
+                            <td><input type="text" name="" id=""></td>
+                            <td><input type="text" name="" id=""></td>
+                            <td><input type="text" name="" id=""></td>
+                            <td><input type="text" name="" id=""></td>
+                            <td><input type="text" name="" id=""></td>
+                            <td><input type="text" name="" id=""></td>
+                            <td><input type="text" name="" id=""></td>
+                            <td><input type="text" name="" id=""></td>
+                        </tr>
+                        <tr>
+                            <td> <input type="text" name="" id=""> </td>
+                            <td> <input type="text" name="" id=""></td>
+                            <td><input type="text" name="" id=""></td>
+                            <td><input type="text" name="" id=""></td>
+                            <td><input type="text" name="" id=""></td>
+                            <td><input type="text" name="" id=""></td>
+                            <td><input type="text" name="" id=""></td>
+                            <td><input type="text" name="" id=""></td>
+                            <td><input type="text" name="" id=""></td>
+                            <td><input type="text" name="" id=""></td>
+                        </tr>
+                        <tr>
+                            <td> <input type="text" name="" id=""> </td>
+                            <td> <input type="text" name="" id=""></td>
+                            <td><input type="text" name="" id=""></td>
+                            <td><input type="text" name="" id=""></td>
+                            <td><input type="text" name="" id=""></td>
+                            <td><input type="text" name="" id=""></td>
+                            <td><input type="text" name="" id=""></td>
+                            <td><input type="text" name="" id=""></td>
+                            <td><input type="text" name="" id=""></td>
+                            <td><input type="text" name="" id=""></td>
+                        </tr>
+                        <tr>
+                            <td colspan="2"> Pass / Fail </td>
+                            <td> <input type="text" name="" id=""> </td>
+                            <td> <input type="text" name="" id=""></td>
+                            <td><input type="text" name="" id=""></td>
+                            <td><input type="text" name="" id=""></td>
+                            <td><input type="text" name="" id=""></td>
+                            <td><input type="text" name="" id=""></td>
+                            <td><input type="text" name="" id=""></td>
+                            <td><input type="text" name="" id=""></td>
+                            <td><input type="text" name="" id=""></td>
+                            <td><input type="text" name="" id=""></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            
+            <!--  REMARKS TABLE -->
+            <div class="remarks-table">
+                <table class="table">
+                    <tr>
+                        <td>
+                            <p>*MPE: Maximum Permissible Error</p>
+                            <p>** Pressure Reduction Rate: Measure the pressure after 5 minutes and calculate the Pressure reduction rate by dividing the difference over 5. Pressure reduction rate should not exceed 4mmHg/min for the mechanical and 6mmHg/min for the automated</p>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <p><b>Remarks:</b></p>
+                            <textarea name="" id="" cols="30" rows="3" style="width:100%"></textarea>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+    
+            <!-- SIGN TABLE  -->
+            <div class="sign-table">
+                <table class="table table-borderless">
+                    <tr>
+                        <td>Carried By:</td>
+                        <td><input type="text" name="" id="" class="border-bottem-dotted-line"></td>
+                        <td>Approved By:</td>
+                        <td><input type="text" name="" id="" class="border-bottem-dotted-line"></td>
+                    </tr>
+                    <tr>
+                        <td>Signature:</td>
+                        <td><input type="text" name="" id="" class="border-bottem-dotted-line"></td>
+                        <td>Signature:</td>
+                        <td><input type="text" name="" id="" class="border-bottem-dotted-line"></td>
+                    </tr>
+                    <tr>
+                        <td>Date:</td>
+                        <td><input type="text" name="" id="" class="border-bottem-dotted-line"></td>
+                        <td>Date:</td>
+                        <td><input type="text" name="" id="" class="border-bottem-dotted-line"></td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+    </main>
+    <footer>
+
+    </footer>
 
 </body>
 </html>
