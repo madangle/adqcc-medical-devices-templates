@@ -1,0 +1,374 @@
+<!DOCTYPE html>
+<head>
+    <meta http-equiv="X-UA-Compatible" content="IE=10" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <!-- <link rel="stylesheet" href="default.css" /> -->
+    <link rel="stylesheet" href="jquery-ui.css" />
+    <!-- <link rel="stylesheet" type="text/css" media="all" href="inv.css" /> -->
+    <style>
+        .stationType {
+            display: inline-block;
+            width: 30%;
+            margin-bottom: 20px;
+        }
+        #btsave {
+            margin-right: 20px;
+        }
+    </style>
+    <script>
+        var today = new Date();
+        var curHr = today.getHours()
+        if(curHr >= 24|| curHr < 7) {
+            window.location.replace('https://apps.qcc.abudhabi.ae/VIS/Pages/InAccessiblePage.aspx');
+        }
+    </script>       
+</head>
+<body>
+    <div class="innerpagecon container">
+        <!-- <span id="loading" style="display:none;">
+            <span class="loader">
+                <span id="outerCircle">
+                </span>
+                <span id="innerCircle">
+                    <span id="center"></span>
+                </span>
+            </span>
+        </span> -->
+        <!-- <div class="changeDirection">
+            <a href="#" ng-click="ChangeDirection(direction)" class="changedir" title="change type direction"><img src="/Style%20Library/VISNew/img/ltr.png" height="32" alt="change direction"/></a>
+        </div>
+        <ol class="breadcrumb">
+            <li  class="breadcrumb-item" ><a href="https://protect-eu.mimecast.com/s/6VL8C1wOrtRE75uypv-7?domain=apps.qcc.abudhabi.ae" style="color:#c5a25e!important">
+                &#1604;&#1608;&#1581;&#1577;&#1575;&#1604;&#1602;&#1610;&#1575;&#1583;&#1577; </a>
+            </li>
+            <li class="breadcrumb-item active"><a> &#1571;&#1580;&#1607;&#1586;&#1577; &#1590;&#1594;&#1591; 
+                &#1575;&#1604;&#1573;&#1591;&#1575;&#1585;&#1575;&#1578;</a>
+            </li>
+        </ol> -->
+        <section class="setup-content">
+            <div class="formmgroup" id="searchcc">
+                <div class="titbut">
+                    <h4>Pharma Verification Report For Blood Pressure Manometers</h4>
+                </div>
+                
+                <!-- APPLICANT DETAILS -->
+                <fieldset class="row">
+                    <legend>Applicant Details
+                    </legend>
+                    <div class="form-group">
+                        <label>تاريخ التحقق / Applicant Name</label>
+                        <input type="text" id="reportNo" class="form-control" readonly="true" style="background-color:yellow"/>
+                    </div>
+                    <div class="form-group">
+                        <label>تاريخ التحقق / Manometer Brand Name:
+                        </label>
+                        <input type="text" class="form-control" id="Date" readonly="true" style="background-color:yellow"/>
+                    </div>
+                </fieldset>
+
+                <!-- BATCH DETAILS -->
+                <fieldset class="row">
+                    <legend>نوع المنشأة / Entity Type
+                    </legend>
+                    <div class="stationType">
+                        <label>محطة الخدمة / Service Station:
+                        </label>
+                        <input id="Sstation" type="checkbox" value="Service Station" class="SstationCheckbox" />
+                    </div>
+                    <div class="stationType">
+                        <label>محل إطارات / Tire Shop:
+                        </label>
+                        <input  id="Tshop" type="checkbox" value="Tire Shop" class="TshopCheckbox" />
+                    </div>
+                    <div class="stationType">
+                        <label>Market Samples / عينات أسواق
+                        </label>
+                        <input id="market" type="checkbox" value="Market" class="market" />
+                    </div>
+                    <div class="form-group Tradelcs" style="display:none;">
+                        <label> رقم الرخصة / Trade License No:
+                        </label>
+                        <input type="text" id="TLNo" class="long form-control"/>
+                    </div>
+                    <div class="entityName form-group" style="display:none;">
+                        <label>اسم المنشأة / Entity Name:
+                        </label>
+                        <input type="text" id="entityName"  class="long form-control"/>
+                    </div>
+                    <div class="ServStat form-group" style="display:none;">
+                        <label>رقم محطة الخدمة / Service Station No:
+                        </label>
+                        <input type="text" id="SSNo" class="long form-control"/>
+                    </div>
+                    <div class="ServStatName form-group" style="display:none;">
+                        <label>اسم محطة الخدمة / Service Station Name:
+                        </label>
+                        <input type="text" id="SSName" class="long form-control"/>
+                    </div>
+                    <div class="idLoc form-group" style="display:none;">
+                        <label >الموقع / Location *
+                        </label>
+                        <select id="LocationOrCity" class="form-control"  style="width:34%;">
+                            <option value="Select Location">
+                                Select Location
+                            </option>
+                            <option value="Abu Dhabi">Abu 
+                                Dhabi
+                            </option>
+                            <option value="Al Ain">Al Ain</option>
+                            <option value="Western Region">
+                                Western Region
+                            </option>
+                        </select>
+                    </div>
+                    <div class="idAddress form-group" style="display:none; ">
+                        <label>العنوان / Address *
+                        </label>
+                        <input  id="Address" type="text"  class="long form-control"/>
+                    </div>
+                </fieldset>
+                <fieldset class="row">
+                    <legend>بيانات الشخص المسؤول / Contact Person
+                    </legend>
+                    <div class="form-group">
+                        <label>الاسم / Name *
+                        </label>
+                        <input  id="name" type="text" class="long form-control"/>
+                    </div>
+                    <div class="form-group">
+                        <label>الهاتف / Mobile *
+                        </label>
+                        <input  id="mobile" type="text" maxlength="10" class="long form-control"/>
+                    </div>
+                    <div class="form-group">                    
+                        <label>الايميل / Email *
+                        </label>
+                        <input type="text" class="long form-control" id="Email"/>
+                    </div>
+                    <!-- Added by sridhar 30-8-2018 as requested by client -->
+                    <div class="form-group">
+                        <label>الهاتف الارضي / Telephone *
+                        </label>
+                        <input  id="Telephone" type="text" maxlength="10" class="long form-control"/>
+                    </div>
+                    <!-- Ends Here -->
+                    <p>
+                        <button type="button" class="button buttons btn-primary"  id="btntradeLic"  onclick="callDED()" style="display:none;">
+                        Find</button>
+                        &nbsp; &nbsp;
+                        <button type="button" class="button buttons btn-primary"  id="btnSSNO"  onclick="findSSNO()" style="display:none; margin-left:30px;">
+                        Find Station</button>
+                        &nbsp; &nbsp;
+                        <button type="button" class="button buttons btn-primary"  id="btnsavessn"  onclick="saveSSNo()" style="display:none; margin-left:30px;">
+                        Save Station</button>
+                        &nbsp; &nbsp;
+                        <button type="button" class="button buttons btn-primary"  id="btnhistory"  onclick="history()" style="display:none; margin-left:30px;">
+                        History</button>
+                    </p>
+                </fieldset>
+                <fieldset class="row" id="History" style="display:none;">
+                    <legend > History </legend>
+                    <table id="" border="1" align="center" class="table table-responsive">
+                        <thead class="divReportHeaderRows">
+                            <tr id="head">
+                                <th style="width: 50px;"  ><span><font color="white">Test Date </font></span>
+                                </th>
+                                <th style="width:100px"><span><font color="white">Inspector  </font></span>
+                                </th>
+                                <th style="width:100px;"><span><FONT color="white">Name</FONT></span>
+                                </th>
+                                <th style="width:100px;"><span><FONT color="white">Result</FONT></span>
+                                </th>
+                                <th style="width:100px;"><span><FONT color="white">Mark Number</FONT></span>
+                                </th>
+                                <th style="width:100px;"><span><FONT color="white">Next visit</FONT></span>
+                                </th>
+                                <th style="width:100px;"><span><FONT color="white">Status</FONT></span>
+                                </th>
+                            </tr>
+                        </thead>
+                        <tbody id="viewHistory" border="1">
+                        </tbody>
+                    </table>
+                </fieldset>
+                <fieldset class="row">
+                    <legend>نوع التحقق / Type of Verification:
+                    </legend>
+                    <div class="form-group">
+                        <label> الزيارة الأولى / First Visit:
+                        </label>
+                        <input type="checkbox" id="fvisit" value="First Visit" class="FirstVisit"/>
+                    </div>
+                    <div class="form-group">
+                        <label>تحقق أولي / Initial verification:
+                        </label>
+                        <input type="checkbox" id="Iverification"  value="Initial verification" class="IverificationCheckbox" />
+                    </div>
+                    <div class="form-group">
+                        <label>تحقق دوري / Periodic verification:
+                        </label>
+                        <input type="checkbox" id="Pverification"  value ="Periodic verification" class="PverificationCheckbox"  />
+                    </div>
+                    <div class="form-group">
+                        <label>إعادة التحقق / ReVerification:
+                        </label>
+                        <input type="checkbox" id="typeVr" value ="Re Verification" class="ReVer"/>
+                    </div>
+                </fieldset>
+                <fieldset class="row">
+                    <legend>Reference Standards:</legend>
+                    <div class="form-group">
+                        <label>معيار الضغط / Pressure Calibrator:
+                        </label>
+                        <select class="form-control" id="calibrator">
+                            <option default>Select Calibrator</option>
+                            <option value="Onneken F082404">Onneken	F082404</option>
+                            <option value="Onneken F082406">Onneken	F082406</option>
+                            <option value="PCL T 1070">PCL T 1070</option>
+                            <option value="PCL T 1068">PCL T 1068</option>
+                            <option value="PCL T 1069">PCL T 1069</option>
+                        </select> 
+                    </div>
+                    <div class="form-group">
+                        <label>ميزان الحرارة / Thermometers:
+                        </label>
+                        <select class="form-control" id="Thermometers">
+                            <option default>Select Thermometers</option>
+                            <option value="Fluke  2085086">Fluke 2085086</option>
+                            <option value="Fluke  2085083">Fluke 2085083</option>
+                            <option value="Fluke  2085078">Fluke 2085078</option>
+                            <option value="Fluke  2085090">Fluke 2085090</option>
+                            <option value="Fluke   2085100">Fluke 2085100</option>
+                            <option value="Fluke  2085074">Fluke 2085074</option>
+                        </select>                   
+                    </div>
+                </fieldset>
+                <fieldset class="row">
+                    <legend>Tire pressure gauage Description
+                    </legend>
+                    <div class="form-group">
+                        <label>المصنّع / Manufacturer:
+                        </label>
+                        <input type="text" id="TPmanf" class="long form-control" />
+                    </div>
+                    <div class="form-group">
+                        <label>وحدة القياس / Measuring unit:
+                        </label>
+                        <select id="MeasuringUnit" style="width:25%;" class="form-control">
+                            <option value="Select Measurment Unit">
+                                Select Measurment Unit
+                            </option>
+                            <!-- <option value="Bar">PSI</option>
+                                <option value="MPA">Bar</option>
+                                <option value="PSI">Mpa</option>-->
+                            <option value="PSI">PSI</option>
+                            <option value="Bar">Bar</option>
+                            <option value="MPA">Mpa</option>
+                        </select>
+                    </div>
+                    <div class="form-group">                   
+                        <label>الموديل / Model:
+                        </label>
+                        <input type="text" id="model" class="long form-control"/>
+                    </div>
+                    <div class="form-group">        
+                        <label>الحمولة القصوى / Max=:
+                        </label>
+                        <input type="text" class="form-control" id="Max" />
+                    </div>
+                    <div class="form-group">                      
+                        <label>الرقم التسلسلي / Serial No:
+                        </label>
+                        <input type="text" id="SNo" class="long form-control" />
+                    </div>
+                    <div class="form-group">      
+                        <label>الحمولة الدنيا / Min=:
+                        </label>
+                        <input type="text" class="form-control" id="Min" />
+                    </div>
+                    <div class="form-group">                       
+                        <label>درجة الحرارة / Air Temperature °C:
+                        </label>
+                        <input type="text" id="AirTemperature" class="long form-control" />
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <button type="button" class="button buttons btn btn-primary" id="btnCheckMP" style="vertical-align:middle;"  value="Check MPE" onclick="btnCheckMPE()">
+                            Check MPE</button>
+                        </div>
+                    </div>
+                </fieldset>
+                <fieldset class="row" id="MPE">
+                    <legend > M P E </legend>
+                    <table id="tblSamplesStage2" border="1" align="center" class="table table-responsive">
+                        <thead class="divReportHeaderRows">
+                            <tr id="divSamplesHeaderRowsStage2">
+                                <th style="width: 50px;"  ><span><font color="white">نقطة الاختبار/Test Point <br/> ( )</font></span>
+                                </th>
+                                <th style="width:100px"><span><font color="white">القيمة المخطط لقياسها /Test Pressure  <br/>  Setting 
+                                    ( )</font></span>
+                                </th>
+                                <th style="width:100px;"><span><FONT color="white">قراءة جهاز المعايرة/ Calibrator  <br/> Reading</FONT></span>
+                                </th>
+                                <th style="width:100px;"><span><FONT color="white">قراءة جهاز ضغط الإطار/Test gauge  <br/>  Reading</FONT></span>
+                                </th>
+                                <th style="width:150px;"><span><font color="white"> الخطأ الأعظم المسموح به/MPE</font></span>
+                                </th>
+                                <th  style="width:200px;" class="volume"><span><font color="white">الخطأ / Error<br/> 
+                                    ( )</font></span>
+                                </th>
+                                <th  style="width:100px;" class="volume"><span><font color="white">قبول/ Accept</font></span>
+                                </th>
+                                <th  style="width:100px;" class="volume"><span><font color="white">رفض/ Not Accept </font></span>
+                                </th>
+                            </tr>
+                        </thead>
+                        <tbody id="tblBody" border="1"></tbody>
+                    </table>
+                    <button type="button" class="button btn btn-primary" id="btnoverall"  onclick="btnOverall()" style="display:none;">
+                    Overall Result</button>
+                </fieldset>
+                <div id="overallresult" style="display:none;" class="OverResult">
+                    <fieldset class="row1">
+                        <legend>النتيجة النهائية / Overall Result:</legend>
+                        <div class="form-group pass-grp">                      
+                            <label>Pass:
+                            </label>
+                            <input type="checkbox" id="pass"  value="Initial verification" class="OverallPass" disabled="true"/>
+                        </div>
+                        <div class="form-group fail-grp">
+                            <label>Fail:
+                            </label>
+                            <input type="checkbox" id="fail"  value ="Periodic verification" class="OverallFail"  disabled="true" />
+                        </div>
+                        <div class="form-group pass-grp">
+                            <label style="display:none;" id="lblvMark">  Verified Mark 
+                            </label>
+                            <input type="text" id="verifiedMark" class="form-control"  style="display:none;"/>
+                        </div>
+                        <div class="form-group fail-grp">
+                            <label style="display:none;" id="lblvMarkFail">  
+                            VerifiedMark Fail 
+                            </label>
+                            <input type="text" id="verifiedMarkFail" class="form-control"  style="display:none;" />
+                        </div>
+                        <div class="row">
+                            <div class="col-md-12">
+                                <button type="button" class="button buttons btn btn-primary" id="btsave" onclick="SaveData()">Save</button>
+                                <button type="button" class="button buttons btn btn-primary" id="btprintReport" onclick="printReport()">Print Report</button>
+                            </div>
+                        </div>
+                    </fieldset>
+                </div>
+            </div>
+        </section>
+    </div>
+    <script type="text/javascript" src="/Style Library/TirePresure/Configuration.js"></script>
+    <script type="text/javascript" src="/Style Library/TirePresure/BusinessCategories.js"></script>
+    <script type="text/javascript" src="/Style%20Library/VISNew/js/moment.js"></script>
+    <script type="text/javascript" src="/Style Library/TirePresure/ScaleMainPage.js"></script>
+    <script type="text/javascript" src="/Style Library/TirePresure/WebServices.js"></script>
+    <script type="text/javascript" src="/Style Library/TirePresure/LoadSharePiontList.js"></script>  
+    <script type="text/javascript" src="/Style Library/TirePresure/App.js"></script> 
+</body>
+</html>
