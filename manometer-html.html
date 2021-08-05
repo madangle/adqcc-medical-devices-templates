@@ -1,374 +1,367 @@
 <!DOCTYPE html>
-<head>
-    <meta http-equiv="X-UA-Compatible" content="IE=10" />
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <!-- <link rel="stylesheet" href="default.css" /> -->
-    <link rel="stylesheet" href="jquery-ui.css" />
-    <!-- <link rel="stylesheet" type="text/css" media="all" href="inv.css" /> -->
-    <style>
-        .stationType {
-            display: inline-block;
-            width: 30%;
-            margin-bottom: 20px;
-        }
-        #btsave {
-            margin-right: 20px;
-        }
-    </style>
-    <script>
-        var today = new Date();
-        var curHr = today.getHours()
-        if(curHr >= 24|| curHr < 7) {
-            window.location.replace('https://apps.qcc.abudhabi.ae/VIS/Pages/InAccessiblePage.aspx');
-        }
-    </script>       
-</head>
-<body>
-    <div class="innerpagecon container">
-        <!-- <span id="loading" style="display:none;">
-            <span class="loader">
-                <span id="outerCircle">
-                </span>
-                <span id="innerCircle">
-                    <span id="center"></span>
-                </span>
-            </span>
-        </span> -->
-        <!-- <div class="changeDirection">
-            <a href="#" ng-click="ChangeDirection(direction)" class="changedir" title="change type direction"><img src="/Style%20Library/VISNew/img/ltr.png" height="32" alt="change direction"/></a>
-        </div>
-        <ol class="breadcrumb">
-            <li  class="breadcrumb-item" ><a href="https://protect-eu.mimecast.com/s/6VL8C1wOrtRE75uypv-7?domain=apps.qcc.abudhabi.ae" style="color:#c5a25e!important">
-                &#1604;&#1608;&#1581;&#1577;&#1575;&#1604;&#1602;&#1610;&#1575;&#1583;&#1577; </a>
-            </li>
-            <li class="breadcrumb-item active"><a> &#1571;&#1580;&#1607;&#1586;&#1577; &#1590;&#1594;&#1591; 
-                &#1575;&#1604;&#1573;&#1591;&#1575;&#1585;&#1575;&#1578;</a>
-            </li>
-        </ol> -->
-        <section class="setup-content">
-            <div class="formmgroup" id="searchcc">
-                <div class="titbut">
-                    <h4>Pharma Verification Report For Blood Pressure Manometers</h4>
-                </div>
-                
-                <!-- APPLICANT DETAILS -->
-                <fieldset class="row">
-                    <legend>Applicant Details
-                    </legend>
-                    <div class="form-group">
-                        <label>تاريخ التحقق / Applicant Name</label>
-                        <input type="text" id="reportNo" class="form-control" readonly="true" style="background-color:yellow"/>
-                    </div>
-                    <div class="form-group">
-                        <label>تاريخ التحقق / Manometer Brand Name:
-                        </label>
-                        <input type="text" class="form-control" id="Date" readonly="true" style="background-color:yellow"/>
-                    </div>
-                </fieldset>
+<html lang="en">
+    <head>
+        <meta http-equiv="X-UA-Compatible" content="IE=10" />
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        <title>Pharma Verification Report For Blood Pressure Manometers</title>
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+        <style>
+            .stationType {
+                display: inline-block;
+                width: 30%;
+                margin-bottom: 20px;
+            }
+            #btsave {
+                margin-right: 20px;
+            }
+            table.table tr td input {
+                width: 100%;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="innerpagecon container">
 
-                <!-- BATCH DETAILS -->
-                <fieldset class="row">
-                    <legend>نوع المنشأة / Entity Type
-                    </legend>
-                    <div class="stationType">
-                        <label>محطة الخدمة / Service Station:
-                        </label>
-                        <input id="Sstation" type="checkbox" value="Service Station" class="SstationCheckbox" />
+            <section class="setup-content">
+                <div class="formmgroup" id="searchcc">
+                    <div class="titbut">
+                        <h4>Pharma Verification Report For Blood Pressure Manometers</h4>
                     </div>
-                    <div class="stationType">
-                        <label>محل إطارات / Tire Shop:
-                        </label>
-                        <input  id="Tshop" type="checkbox" value="Tire Shop" class="TshopCheckbox" />
-                    </div>
-                    <div class="stationType">
-                        <label>Market Samples / عينات أسواق
-                        </label>
-                        <input id="market" type="checkbox" value="Market" class="market" />
-                    </div>
-                    <div class="form-group Tradelcs" style="display:none;">
-                        <label> رقم الرخصة / Trade License No:
-                        </label>
-                        <input type="text" id="TLNo" class="long form-control"/>
-                    </div>
-                    <div class="entityName form-group" style="display:none;">
-                        <label>اسم المنشأة / Entity Name:
-                        </label>
-                        <input type="text" id="entityName"  class="long form-control"/>
-                    </div>
-                    <div class="ServStat form-group" style="display:none;">
-                        <label>رقم محطة الخدمة / Service Station No:
-                        </label>
-                        <input type="text" id="SSNo" class="long form-control"/>
-                    </div>
-                    <div class="ServStatName form-group" style="display:none;">
-                        <label>اسم محطة الخدمة / Service Station Name:
-                        </label>
-                        <input type="text" id="SSName" class="long form-control"/>
-                    </div>
-                    <div class="idLoc form-group" style="display:none;">
-                        <label >الموقع / Location *
-                        </label>
-                        <select id="LocationOrCity" class="form-control"  style="width:34%;">
-                            <option value="Select Location">
-                                Select Location
-                            </option>
-                            <option value="Abu Dhabi">Abu 
-                                Dhabi
-                            </option>
-                            <option value="Al Ain">Al Ain</option>
-                            <option value="Western Region">
-                                Western Region
-                            </option>
-                        </select>
-                    </div>
-                    <div class="idAddress form-group" style="display:none; ">
-                        <label>العنوان / Address *
-                        </label>
-                        <input  id="Address" type="text"  class="long form-control"/>
-                    </div>
-                </fieldset>
-                <fieldset class="row">
-                    <legend>بيانات الشخص المسؤول / Contact Person
-                    </legend>
-                    <div class="form-group">
-                        <label>الاسم / Name *
-                        </label>
-                        <input  id="name" type="text" class="long form-control"/>
-                    </div>
-                    <div class="form-group">
-                        <label>الهاتف / Mobile *
-                        </label>
-                        <input  id="mobile" type="text" maxlength="10" class="long form-control"/>
-                    </div>
-                    <div class="form-group">                    
-                        <label>الايميل / Email *
-                        </label>
-                        <input type="text" class="long form-control" id="Email"/>
-                    </div>
-                    <!-- Added by sridhar 30-8-2018 as requested by client -->
-                    <div class="form-group">
-                        <label>الهاتف الارضي / Telephone *
-                        </label>
-                        <input  id="Telephone" type="text" maxlength="10" class="long form-control"/>
-                    </div>
-                    <!-- Ends Here -->
-                    <p>
-                        <button type="button" class="button buttons btn-primary"  id="btntradeLic"  onclick="callDED()" style="display:none;">
-                        Find</button>
-                        &nbsp; &nbsp;
-                        <button type="button" class="button buttons btn-primary"  id="btnSSNO"  onclick="findSSNO()" style="display:none; margin-left:30px;">
-                        Find Station</button>
-                        &nbsp; &nbsp;
-                        <button type="button" class="button buttons btn-primary"  id="btnsavessn"  onclick="saveSSNo()" style="display:none; margin-left:30px;">
-                        Save Station</button>
-                        &nbsp; &nbsp;
-                        <button type="button" class="button buttons btn-primary"  id="btnhistory"  onclick="history()" style="display:none; margin-left:30px;">
-                        History</button>
-                    </p>
-                </fieldset>
-                <fieldset class="row" id="History" style="display:none;">
-                    <legend > History </legend>
-                    <table id="" border="1" align="center" class="table table-responsive">
-                        <thead class="divReportHeaderRows">
-                            <tr id="head">
-                                <th style="width: 50px;"  ><span><font color="white">Test Date </font></span>
-                                </th>
-                                <th style="width:100px"><span><font color="white">Inspector  </font></span>
-                                </th>
-                                <th style="width:100px;"><span><FONT color="white">Name</FONT></span>
-                                </th>
-                                <th style="width:100px;"><span><FONT color="white">Result</FONT></span>
-                                </th>
-                                <th style="width:100px;"><span><FONT color="white">Mark Number</FONT></span>
-                                </th>
-                                <th style="width:100px;"><span><FONT color="white">Next visit</FONT></span>
-                                </th>
-                                <th style="width:100px;"><span><FONT color="white">Status</FONT></span>
-                                </th>
-                            </tr>
-                        </thead>
-                        <tbody id="viewHistory" border="1">
-                        </tbody>
-                    </table>
-                </fieldset>
-                <fieldset class="row">
-                    <legend>نوع التحقق / Type of Verification:
-                    </legend>
-                    <div class="form-group">
-                        <label> الزيارة الأولى / First Visit:
-                        </label>
-                        <input type="checkbox" id="fvisit" value="First Visit" class="FirstVisit"/>
-                    </div>
-                    <div class="form-group">
-                        <label>تحقق أولي / Initial verification:
-                        </label>
-                        <input type="checkbox" id="Iverification"  value="Initial verification" class="IverificationCheckbox" />
-                    </div>
-                    <div class="form-group">
-                        <label>تحقق دوري / Periodic verification:
-                        </label>
-                        <input type="checkbox" id="Pverification"  value ="Periodic verification" class="PverificationCheckbox"  />
-                    </div>
-                    <div class="form-group">
-                        <label>إعادة التحقق / ReVerification:
-                        </label>
-                        <input type="checkbox" id="typeVr" value ="Re Verification" class="ReVer"/>
-                    </div>
-                </fieldset>
-                <fieldset class="row">
-                    <legend>Reference Standards:</legend>
-                    <div class="form-group">
-                        <label>معيار الضغط / Pressure Calibrator:
-                        </label>
-                        <select class="form-control" id="calibrator">
-                            <option default>Select Calibrator</option>
-                            <option value="Onneken F082404">Onneken	F082404</option>
-                            <option value="Onneken F082406">Onneken	F082406</option>
-                            <option value="PCL T 1070">PCL T 1070</option>
-                            <option value="PCL T 1068">PCL T 1068</option>
-                            <option value="PCL T 1069">PCL T 1069</option>
-                        </select> 
-                    </div>
-                    <div class="form-group">
-                        <label>ميزان الحرارة / Thermometers:
-                        </label>
-                        <select class="form-control" id="Thermometers">
-                            <option default>Select Thermometers</option>
-                            <option value="Fluke  2085086">Fluke 2085086</option>
-                            <option value="Fluke  2085083">Fluke 2085083</option>
-                            <option value="Fluke  2085078">Fluke 2085078</option>
-                            <option value="Fluke  2085090">Fluke 2085090</option>
-                            <option value="Fluke   2085100">Fluke 2085100</option>
-                            <option value="Fluke  2085074">Fluke 2085074</option>
-                        </select>                   
-                    </div>
-                </fieldset>
-                <fieldset class="row">
-                    <legend>Tire pressure gauage Description
-                    </legend>
-                    <div class="form-group">
-                        <label>المصنّع / Manufacturer:
-                        </label>
-                        <input type="text" id="TPmanf" class="long form-control" />
-                    </div>
-                    <div class="form-group">
-                        <label>وحدة القياس / Measuring unit:
-                        </label>
-                        <select id="MeasuringUnit" style="width:25%;" class="form-control">
-                            <option value="Select Measurment Unit">
-                                Select Measurment Unit
-                            </option>
-                            <!-- <option value="Bar">PSI</option>
-                                <option value="MPA">Bar</option>
-                                <option value="PSI">Mpa</option>-->
-                            <option value="PSI">PSI</option>
-                            <option value="Bar">Bar</option>
-                            <option value="MPA">Mpa</option>
-                        </select>
-                    </div>
-                    <div class="form-group">                   
-                        <label>الموديل / Model:
-                        </label>
-                        <input type="text" id="model" class="long form-control"/>
-                    </div>
-                    <div class="form-group">        
-                        <label>الحمولة القصوى / Max=:
-                        </label>
-                        <input type="text" class="form-control" id="Max" />
-                    </div>
-                    <div class="form-group">                      
-                        <label>الرقم التسلسلي / Serial No:
-                        </label>
-                        <input type="text" id="SNo" class="long form-control" />
-                    </div>
-                    <div class="form-group">      
-                        <label>الحمولة الدنيا / Min=:
-                        </label>
-                        <input type="text" class="form-control" id="Min" />
-                    </div>
-                    <div class="form-group">                       
-                        <label>درجة الحرارة / Air Temperature °C:
-                        </label>
-                        <input type="text" id="AirTemperature" class="long form-control" />
-                    </div>
-                    <div class="row">
-                        <div class="col-md-12">
-                            <button type="button" class="button buttons btn btn-primary" id="btnCheckMP" style="vertical-align:middle;"  value="Check MPE" onclick="btnCheckMPE()">
-                            Check MPE</button>
+                    
+                    <!-- APPLICANT DETAILS -->
+                    <fieldset class="row">
+                        <legend>Applicant Details</legend>
+                        <div class="form-group col-md-6 mb-3">
+                            <label>تاريخ التحقق / Applicant Name</label>
+                            <input type="text" class="form-control" id="applicantName" name="applicantName" />
                         </div>
-                    </div>
-                </fieldset>
-                <fieldset class="row" id="MPE">
-                    <legend > M P E </legend>
-                    <table id="tblSamplesStage2" border="1" align="center" class="table table-responsive">
-                        <thead class="divReportHeaderRows">
-                            <tr id="divSamplesHeaderRowsStage2">
-                                <th style="width: 50px;"  ><span><font color="white">نقطة الاختبار/Test Point <br/> ( )</font></span>
-                                </th>
-                                <th style="width:100px"><span><font color="white">القيمة المخطط لقياسها /Test Pressure  <br/>  Setting 
-                                    ( )</font></span>
-                                </th>
-                                <th style="width:100px;"><span><FONT color="white">قراءة جهاز المعايرة/ Calibrator  <br/> Reading</FONT></span>
-                                </th>
-                                <th style="width:100px;"><span><FONT color="white">قراءة جهاز ضغط الإطار/Test gauge  <br/>  Reading</FONT></span>
-                                </th>
-                                <th style="width:150px;"><span><font color="white"> الخطأ الأعظم المسموح به/MPE</font></span>
-                                </th>
-                                <th  style="width:200px;" class="volume"><span><font color="white">الخطأ / Error<br/> 
-                                    ( )</font></span>
-                                </th>
-                                <th  style="width:100px;" class="volume"><span><font color="white">قبول/ Accept</font></span>
-                                </th>
-                                <th  style="width:100px;" class="volume"><span><font color="white">رفض/ Not Accept </font></span>
-                                </th>
-                            </tr>
-                        </thead>
-                        <tbody id="tblBody" border="1"></tbody>
-                    </table>
-                    <button type="button" class="button btn btn-primary" id="btnoverall"  onclick="btnOverall()" style="display:none;">
-                    Overall Result</button>
-                </fieldset>
-                <div id="overallresult" style="display:none;" class="OverResult">
-                    <fieldset class="row1">
-                        <legend>النتيجة النهائية / Overall Result:</legend>
-                        <div class="form-group pass-grp">                      
-                            <label>Pass:
-                            </label>
-                            <input type="checkbox" id="pass"  value="Initial verification" class="OverallPass" disabled="true"/>
+                        <div class="form-group col-md-6 mb-3">
+                            <label>تاريخ التحقق / Manometer Brand Name:</label>
+                            <input type="text" class="form-control" id="manometerBrandName" name="manometerBrandName"/>
                         </div>
-                        <div class="form-group fail-grp">
-                            <label>Fail:
-                            </label>
-                            <input type="checkbox" id="fail"  value ="Periodic verification" class="OverallFail"  disabled="true" />
-                        </div>
-                        <div class="form-group pass-grp">
-                            <label style="display:none;" id="lblvMark">  Verified Mark 
-                            </label>
-                            <input type="text" id="verifiedMark" class="form-control"  style="display:none;"/>
-                        </div>
-                        <div class="form-group fail-grp">
-                            <label style="display:none;" id="lblvMarkFail">  
-                            VerifiedMark Fail 
-                            </label>
-                            <input type="text" id="verifiedMarkFail" class="form-control"  style="display:none;" />
-                        </div>
-                        <div class="row">
-                            <div class="col-md-12">
-                                <button type="button" class="button buttons btn btn-primary" id="btsave" onclick="SaveData()">Save</button>
-                                <button type="button" class="button buttons btn btn-primary" id="btprintReport" onclick="printReport()">Print Report</button>
+                    </fieldset>
+
+                    <!-- BATCH DETAILS -->
+                    <fieldset class="row">
+                        <legend>Batch Number</legend>
+                        <div class="form-group">
+                            <label>تاريخ التحقق / Batch No </label>
+                            <div class="input-group mb-3">
+                                <span class="input-group-text">LMN</span>
+                                <input type="text" class="form-control" id="batchValueFirstPart" aria-label="Username" value="B" name="batchValueFirstPart">                                
+                                <input type="text" class="form-control" id="batchValueSecondPart" aria-label="Server" value="201" name="batchValueSecondPart">
                             </div>
                         </div>
                     </fieldset>
+
+                    <!-- SAMPLE SOURCE DETAILS -->
+                    <fieldset class="row">
+                        <legend>نوع المنشأة / Sample Source</legend>
+                        <div class="stationType">
+                            <label>محطة الخدمة / Suppliers:</label>
+                            <input id="Sstation" type="checkbox" value="Service Station" class="SstationCheckbox" />
+                        </div>
+                        <div class="stationType">
+                            <label>محل إطارات / Market:</label>
+                            <input  id="Tshop" type="checkbox" value="Tire Shop" class="SstationCheckbox" />
+                        </div>
+                        <div class="stationType">
+                            <label>عينات أسواق / Customs </label>
+                            <input id="market" type="checkbox" value="Market" class="SstationCheckbox" />
+                        </div>
+                        <div class="stationType">
+                            <label> رقم الرخصة / Purchase Order No: </label>
+                            <input type="text" id="TLNo" class="long form-control"/>
+                        </div>
+                        <div class="stationType">
+                            <label>اسم المنشأة / Customs Clearance No: </label>
+                            <input type="text" id="entityName"  class="long form-control"/>
+                        </div>
+                    </fieldset>
+
+                    <!-- VISUAL TEST DETAILS -->
+                    <fieldset class="row">
+                        <legend>بيانات الشخص المسؤول / Visual Test </legend>
+                        <div class="form-group">
+                            <label>الاسم / Manometer Type </label>
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="checkbox" id="manoMeterTypeMechanical" value="Mechanical" name="manoMeterType">
+                                <label class="form-check-label" for="manoMeterTypeMechanical">Mechanical</label>
+                            </div>
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="checkbox" id="manoMeterTypeAutomated" value="Automated" name="manoMeterType">
+                                <label class="form-check-label" for="manoMeterTypeAutomated">Automated</label>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label>الاسم / Defected </label>
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="checkbox" id="defectedYes" value="yes" name="defected">
+                                <label class="form-check-label" for="defectedYes">Yes</label>
+                            </div>
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="checkbox" id="defectedNo" value="no" name="defected">
+                                <label class="form-check-label" for="defectedNo">No</label>
+                            </div>                            
+                        </div>
+                        <div class="form-group">
+                            <label>الاسم / Pressure Reducing Valve </label>
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="checkbox" id="PRVWorking" value="working" name="pressureReducingValve">
+                                <label class="form-check-label" for="PRVWorking">Working</label>
+                            </div>
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="checkbox" id="PRVNotWorking" value="notWorking" name="pressureReducingValve">
+                                <label class="form-check-label" for="PRVNotWorking">Not Working</label>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label>الهاتف / Sample Size</label>
+                            <input type="text" class="long form-control" value="" name="sampleSize" id="sampleSize" />
+                        </div>
+                    </fieldset>
+                    
+                    <!-- VISUAL TEST DETAILS -->
+                    <fieldset class="row">
+                        <legend>بيانات الشخص المسؤول / Visual Test Data</legend>
+                        <div class="col-md-12">
+                            <table class="table table-bordered">
+                                <thead>
+                                    <tr>
+                                        <td colspan="2">Serial No.</td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                    </tr>
+                                    <tr>
+                                        <td colspan="2">Test Point</td>
+                                        <td>Error</td>
+                                        <td>Error</td>
+                                        <td>Error</td>
+                                        <td>Error</td>
+                                        <td>Error</td>
+                                        <td>Error</td>
+                                        <td>Error</td>
+                                        <td>Error</td>
+                                        <td>Error</td>
+                                        <td>Error</td>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td colspan="2">0 mmHg</td>
+                                        <td> <input type="text" name="" id=""> </td>
+                                        <td> <input type="text" name="" id=""></td>
+                                        <td><input type="text" name="" id=""></td>
+                                        <td><input type="text" name="" id=""></td>
+                                        <td><input type="text" name="" id=""></td>
+                                        <td><input type="text" name="" id=""></td>
+                                        <td><input type="text" name="" id=""></td>
+                                        <td><input type="text" name="" id=""></td>
+                                        <td><input type="text" name="" id=""></td>
+                                        <td><input type="text" name="" id=""></td>
+                                    </tr>
+                                    <tr>
+                                        <td colspan="2">50 mmHg</td>
+                                        <td> <input type="text" name="" id=""> </td>
+                                        <td> <input type="text" name="" id=""></td>
+                                        <td><input type="text" name="" id=""></td>
+                                        <td><input type="text" name="" id=""></td>
+                                        <td><input type="text" name="" id=""></td>
+                                        <td><input type="text" name="" id=""></td>
+                                        <td><input type="text" name="" id=""></td>
+                                        <td><input type="text" name="" id=""></td>
+                                        <td><input type="text" name="" id=""></td>
+                                        <td><input type="text" name="" id=""></td>
+                                    </tr>
+                                    <tr>
+                                        <td colspan="2">100 mmHg</td>
+                                        <td> <input type="text" name="" id=""> </td>
+                                        <td> <input type="text" name="" id=""></td>
+                                        <td><input type="text" name="" id=""></td>
+                                        <td><input type="text" name="" id=""></td>
+                                        <td><input type="text" name="" id=""></td>
+                                        <td><input type="text" name="" id=""></td>
+                                        <td><input type="text" name="" id=""></td>
+                                        <td><input type="text" name="" id=""></td>
+                                        <td><input type="text" name="" id=""></td>
+                                        <td><input type="text" name="" id=""></td>
+                                    </tr>
+                                    <tr>
+                                        <td colspan="2">150 mmHg</td>
+                                        <td> <input type="text" name="" id=""> </td>
+                                        <td> <input type="text" name="" id=""></td>
+                                        <td><input type="text" name="" id=""></td>
+                                        <td><input type="text" name="" id=""></td>
+                                        <td><input type="text" name="" id=""></td>
+                                        <td><input type="text" name="" id=""></td>
+                                        <td><input type="text" name="" id=""></td>
+                                        <td><input type="text" name="" id=""></td>
+                                        <td><input type="text" name="" id=""></td>
+                                        <td><input type="text" name="" id=""></td>
+                                    </tr>
+                                    <tr>
+                                        <td colspan="2">200 mmHg</td>
+                                        <td> <input type="text" name="" id=""> </td>
+                                        <td> <input type="text" name="" id=""></td>
+                                        <td><input type="text" name="" id=""></td>
+                                        <td><input type="text" name="" id=""></td>
+                                        <td><input type="text" name="" id=""></td>
+                                        <td><input type="text" name="" id=""></td>
+                                        <td><input type="text" name="" id=""></td>
+                                        <td><input type="text" name="" id=""></td>
+                                        <td><input type="text" name="" id=""></td>
+                                        <td><input type="text" name="" id=""></td>
+                                    </tr>
+                                    <tr>
+                                        <td colspan="2">250 mmHg</td>
+                                        <td> <input type="text" name="" id=""> </td>
+                                        <td> <input type="text" name="" id=""></td>
+                                        <td><input type="text" name="" id=""></td>
+                                        <td><input type="text" name="" id=""></td>
+                                        <td><input type="text" name="" id=""></td>
+                                        <td><input type="text" name="" id=""></td>
+                                        <td><input type="text" name="" id=""></td>
+                                        <td><input type="text" name="" id=""></td>
+                                        <td><input type="text" name="" id=""></td>
+                                        <td><input type="text" name="" id=""></td>
+                                    </tr>
+                                    <tr>
+                                        <td rowspan="6" style="vertical-align: middle;">Air Leakage Test</td>
+                                        <td rowspan="3">Pressure Reduction Rate** at P100 (mmHg/min)</td>
+                                        <td> <input type="text" name="" id=""> </td>
+                                        <td> <input type="text" name="" id=""></td>
+                                        <td><input type="text" name="" id=""></td>
+                                        <td><input type="text" name="" id=""></td>
+                                        <td><input type="text" name="" id=""></td>
+                                        <td><input type="text" name="" id=""></td>
+                                        <td><input type="text" name="" id=""></td>
+                                        <td><input type="text" name="" id=""></td>
+                                        <td><input type="text" name="" id=""></td>
+                                        <td><input type="text" name="" id=""></td>
+                                    </tr>
+                                    <tr>
+                                        <td> <input type="text" name="" id=""> </td>
+                                        <td> <input type="text" name="" id=""></td>
+                                        <td><input type="text" name="" id=""></td>
+                                        <td><input type="text" name="" id=""></td>
+                                        <td><input type="text" name="" id=""></td>
+                                        <td><input type="text" name="" id=""></td>
+                                        <td><input type="text" name="" id=""></td>
+                                        <td><input type="text" name="" id=""></td>
+                                        <td><input type="text" name="" id=""></td>
+                                        <td><input type="text" name="" id=""></td>
+                                    </tr>
+                                    <tr>
+                                        <td> <input type="text" name="" id=""> </td>
+                                        <td> <input type="text" name="" id=""></td>
+                                        <td><input type="text" name="" id=""></td>
+                                        <td><input type="text" name="" id=""></td>
+                                        <td><input type="text" name="" id=""></td>
+                                        <td><input type="text" name="" id=""></td>
+                                        <td><input type="text" name="" id=""></td>
+                                        <td><input type="text" name="" id=""></td>
+                                        <td><input type="text" name="" id=""></td>
+                                        <td><input type="text" name="" id=""></td>
+                                    </tr>
+                                    <tr>
+                                        <td rowspan="3">Pressure Reduction Rate** at P250 (mmHg/min)</td>
+                                        <td> <input type="text" name="" id=""> </td>
+                                        <td> <input type="text" name="" id=""></td>
+                                        <td><input type="text" name="" id=""></td>
+                                        <td><input type="text" name="" id=""></td>
+                                        <td><input type="text" name="" id=""></td>
+                                        <td><input type="text" name="" id=""></td>
+                                        <td><input type="text" name="" id=""></td>
+                                        <td><input type="text" name="" id=""></td>
+                                        <td><input type="text" name="" id=""></td>
+                                        <td><input type="text" name="" id=""></td>
+                                    </tr>
+                                    <tr>
+                                        <td> <input type="text" name="" id=""> </td>
+                                        <td> <input type="text" name="" id=""></td>
+                                        <td><input type="text" name="" id=""></td>
+                                        <td><input type="text" name="" id=""></td>
+                                        <td><input type="text" name="" id=""></td>
+                                        <td><input type="text" name="" id=""></td>
+                                        <td><input type="text" name="" id=""></td>
+                                        <td><input type="text" name="" id=""></td>
+                                        <td><input type="text" name="" id=""></td>
+                                        <td><input type="text" name="" id=""></td>
+                                    </tr>
+                                    <tr>
+                                        <td> <input type="text" name="" id=""> </td>
+                                        <td> <input type="text" name="" id=""></td>
+                                        <td><input type="text" name="" id=""></td>
+                                        <td><input type="text" name="" id=""></td>
+                                        <td><input type="text" name="" id=""></td>
+                                        <td><input type="text" name="" id=""></td>
+                                        <td><input type="text" name="" id=""></td>
+                                        <td><input type="text" name="" id=""></td>
+                                        <td><input type="text" name="" id=""></td>
+                                        <td><input type="text" name="" id=""></td>
+                                    </tr>
+                                    <tr>
+                                        <td colspan="2"> Pass / Fail </td>
+                                        <td> <input type="text" name="" id=""> </td>
+                                        <td> <input type="text" name="" id=""></td>
+                                        <td><input type="text" name="" id=""></td>
+                                        <td><input type="text" name="" id=""></td>
+                                        <td><input type="text" name="" id=""></td>
+                                        <td><input type="text" name="" id=""></td>
+                                        <td><input type="text" name="" id=""></td>
+                                        <td><input type="text" name="" id=""></td>
+                                        <td><input type="text" name="" id=""></td>
+                                        <td><input type="text" name="" id=""></td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </fieldset>
+
+                    <fieldset>
+                        <legend>بيانات الشخص المسؤول / Remarks</legend>
+                        <div class="input-group mb-3">
+                            <textarea class="form-control" aria-label="With textarea" name="remarks"></textarea>
+                        </div>
+                        <div class="row">
+                            <div class="form-group col-md-6 mb-3">
+                                <label>تاريخ التحقق / Carried By</label>
+                                <input type="text" class="form-control" id="carriedBy" name="carriedBy" />
+                            </div>
+                            <div class="form-group col-md-6 mb-3">
+                                <label>تاريخ التحقق / Signature</label>
+                                <input type="text" class="form-control" id="signature" name="signature"/>
+                            </div>
+                            <div class="form-group col-md-6 mb-3">
+                                <label>تاريخ التحقق / Date</label>
+                                <input type="text" class="form-control" id="carriedByDate" name="carriedByDate"/>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="form-group col-md-6 mb-3">
+                                <label>تاريخ التحقق / Approved By</label>
+                                <input type="text" class="form-control" id="approvedBy" name="approvedBy" />
+                            </div>
+                            <div class="form-group col-md-6 mb-3">
+                                <label>تاريخ التحقق / Signature</label>
+                                <input type="text" class="form-control" id="signature" name="signature"/>
+                            </div>
+                            <div class="form-group col-md-6 mb-3">
+                                <label>تاريخ التحقق / Date</label>
+                                <input type="text" class="form-control" id="approvedByDate" name="approvedByDate"/>
+                            </div>
+                        </div>                         
+                    </fieldset>
                 </div>
-            </div>
-        </section>
-    </div>
-    <script type="text/javascript" src="/Style Library/TirePresure/Configuration.js"></script>
-    <script type="text/javascript" src="/Style Library/TirePresure/BusinessCategories.js"></script>
-    <script type="text/javascript" src="/Style%20Library/VISNew/js/moment.js"></script>
-    <script type="text/javascript" src="/Style Library/TirePresure/ScaleMainPage.js"></script>
-    <script type="text/javascript" src="/Style Library/TirePresure/WebServices.js"></script>
-    <script type="text/javascript" src="/Style Library/TirePresure/LoadSharePiontList.js"></script>  
-    <script type="text/javascript" src="/Style Library/TirePresure/App.js"></script> 
-</body>
+            </section>
+        </div>
+    </body>
 </html>
