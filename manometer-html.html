@@ -4,8 +4,28 @@
         <meta http-equiv="X-UA-Compatible" content="IE=10" />
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
         <title>Pharma Verification Report For Blood Pressure Manometers</title>
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap" rel="stylesheet">
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
         <style>
+             *{
+                font-family: 'Roboto', sans-serif;
+            }
+            .failed-status{
+                background-color: #a91b1b;
+                color: white;
+                font-weight: bold;
+                border: 1px solid #a91b1b;
+                text-align: center;
+            }
+            .passed-status{
+                background-color: #19792c;
+                color: white;
+                font-weight: bold;
+                border: 1px solid #19792c;
+                text-align: center;
+            }
             .stationType {
                 display: inline-block;
                 width: 30%;
@@ -24,121 +44,159 @@
 
             <section class="setup-content">
                 <div class="formmgroup" id="searchcc">
-                    <div class="titbut">
+                    <div class="">
                         <h4>Pharma Verification Report For Blood Pressure Manometers</h4>
                     </div>
                     
                     <!-- APPLICANT DETAILS -->
-                    <fieldset class="row">
+                    <fieldset class="row mt-3">
                         <legend>Applicant Details</legend>
                         <div class="form-group col-md-6 mb-3">
                             <label>تاريخ التحقق / Applicant Name</label>
-                            <input type="text" class="form-control" id="applicantName" name="applicantName" />
+                            <input type="text" class="form-control" id="applicantName" name="applicantName" required/>
                         </div>
                         <div class="form-group col-md-6 mb-3">
                             <label>تاريخ التحقق / Manometer Brand Name:</label>
-                            <input type="text" class="form-control" id="manometerBrandName" name="manometerBrandName"/>
+                            <input type="text" class="form-control" id="manometerBrandName" name="manometerBrandName" required/>
                         </div>
                     </fieldset>
 
                     <!-- BATCH DETAILS -->
-                    <fieldset class="row">
+                    <fieldset class="row mt-3">
                         <legend>Batch Number</legend>
                         <div class="form-group">
                             <label>تاريخ التحقق / Batch No </label>
                             <div class="input-group mb-3">
                                 <span class="input-group-text">LMN</span>
-                                <input type="text" class="form-control" id="batchValueFirstPart" aria-label="Username" value="B" name="batchValueFirstPart">                                
-                                <input type="text" class="form-control" id="batchValueSecondPart" aria-label="Server" value="201" name="batchValueSecondPart">
+                                <input type="text" class="form-control" id="batchValueFirstPart" value="B" name="batchValueFirstPart">                                
+                                <input type="text" class="form-control" id="batchValueSecondPart" value="201" name="batchValueSecondPart">
                             </div>
                         </div>
                     </fieldset>
 
                     <!-- SAMPLE SOURCE DETAILS -->
-                    <fieldset class="row">
+                    <fieldset class="row mt-3 sample-source-section">
                         <legend>نوع المنشأة / Sample Source</legend>
                         <div class="stationType">
                             <label>محطة الخدمة / Suppliers:</label>
-                            <input id="Sstation" type="checkbox" value="Service Station" class="SstationCheckbox" />
+                            <input type="checkbox" name="sampleSource" id="suppliers" value="suppliers" class="sample-source-checkbox"/>
                         </div>
                         <div class="stationType">
                             <label>محل إطارات / Market:</label>
-                            <input  id="Tshop" type="checkbox" value="Tire Shop" class="SstationCheckbox" />
+                            <input type="checkbox" name="sampleSource" id="market" value="market" class="sample-source-checkbox"/>
                         </div>
                         <div class="stationType">
                             <label>عينات أسواق / Customs </label>
-                            <input id="market" type="checkbox" value="Market" class="SstationCheckbox" />
+                            <input type="checkbox" name="sampleSource" id="customs"  value="customs" class="sample-source-checkbox"/>
                         </div>
                         <div class="stationType">
                             <label> رقم الرخصة / Purchase Order No: </label>
-                            <input type="text" id="TLNo" class="long form-control"/>
+                            <input type="text" name="purchaseOrderNumber" id="purchaseOrderNumber" class="long form-control"/>
                         </div>
                         <div class="stationType">
                             <label>اسم المنشأة / Customs Clearance No: </label>
-                            <input type="text" id="entityName"  class="long form-control"/>
+                            <input type="text" name="customsClearanceNumber" id="customsClearanceNumber" class="long form-control"/>
                         </div>
                     </fieldset>
 
                     <!-- VISUAL TEST DETAILS -->
-                    <fieldset class="row">
+                    <fieldset class="row mt-3">
                         <legend>بيانات الشخص المسؤول / Visual Test </legend>
-                        <div class="form-group">
-                            <label>الاسم / Manometer Type </label>
-                            <div class="form-check form-check-inline">
-                                <input class="form-check-input" type="checkbox" id="manoMeterTypeMechanical" value="Mechanical" name="manoMeterType">
-                                <label class="form-check-label" for="manoMeterTypeMechanical">Mechanical</label>
+                        <div class="col-md-12">
+                            <div class="form-group row mt-3">
+                                <div class="col-md-3">
+                                    <label>الاسم / Manometer Type </label>
+                                </div>
+                                <div class="col-md-9">
+                                    <div class="form-check form-check-inline">
+                                        <input class="form-check-input" type="radio" id="manoMeterTypeMechanical" value="mechanical" name="manoMeterType">
+                                        <label class="form-check-label" for="manoMeterTypeMechanical">Mechanical</label>
+                                    </div>
+                                    <div class="form-check form-check-inline">
+                                        <input class="form-check-input" type="radio" id="manoMeterTypeAutomated" value="automated" name="manoMeterType">
+                                        <label class="form-check-label" for="manoMeterTypeAutomated">Automated</label>
+                                    </div>
+                                </div>
                             </div>
-                            <div class="form-check form-check-inline">
-                                <input class="form-check-input" type="checkbox" id="manoMeterTypeAutomated" value="Automated" name="manoMeterType">
-                                <label class="form-check-label" for="manoMeterTypeAutomated">Automated</label>
+                            <div class="form-group row mt-3">
+                                <div class="col-md-3">
+                                    <label>الاسم / Defected </label>
+                                </div>
+                                <div class="col-md-9">
+                                    <div class="form-check form-check-inline">
+                                        <input class="form-check-input" type="radio" id="defectedYes" value="yes" name="defected">
+                                        <label class="form-check-label" for="defectedYes">Yes</label>
+                                    </div>
+                                    <div class="form-check form-check-inline">
+                                        <input class="form-check-input" type="radio" id="defectedNo" value="no" name="defected">
+                                        <label class="form-check-label" for="defectedNo">No</label>
+                                    </div>  
+                                </div>                          
+                            </div>
+                            <div class="form-group row mt-3">
+                                <div class="col-md-3">
+                                    <label>الاسم / Pressure Reducing Valve </label>
+                                </div>
+                                <div class="col-md-9">
+                                    <div class="form-check form-check-inline">
+                                        <input class="form-check-input" type="radio" id="PRVWorking" value="working" name="pressureReducingValve">
+                                        <label class="form-check-label" for="PRVWorking">Working</label>
+                                    </div>
+                                    <div class="form-check form-check-inline">
+                                        <input class="form-check-input" type="radio" id="PRVNotWorking" value="notWorking" name="pressureReducingValve">
+                                        <label class="form-check-label" for="PRVNotWorking">Not Working</label>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group row mt-3">
+                                <div class="col-md-3">
+                                    <label>الهاتف / Sample Size</label>
+                                </div>
+                                <div class="col-md-4">
+                                    <input type="text" class="long form-control" value="" name="sampleSize" id="sampleSize" required />
+                                </div>
+                            </div>
+                            <div class="form-group row mt-3">
+                                <div class="col-md-3">
+                                    <label>الاسم / Verification </label>
+                                </div>
+                                <div class="col-md-9">
+                                    <div class="form-check form-check-inline">
+                                        <input class="form-check-input" type="radio" id="verficationMethodInitial" value="initial" name="verficationMethod">
+                                        <label class="form-check-label" for="verficationMethodInitial">Initial (MPE*= ±3mmHg)</label>
+                                    </div>
+                                    <div class="form-check form-check-inline">
+                                        <input class="form-check-input" type="radio" id="verficationMethodPeriodic" value="periodic" name="verficationMethod">
+                                        <label class="form-check-label" for="verficationMethodPeriodic">Periodic (MPE*=±4mmHg)</label>
+                                    </div>
+                                </div>                            
                             </div>
                         </div>
-                        <div class="form-group">
-                            <label>الاسم / Defected </label>
-                            <div class="form-check form-check-inline">
-                                <input class="form-check-input" type="checkbox" id="defectedYes" value="yes" name="defected">
-                                <label class="form-check-label" for="defectedYes">Yes</label>
-                            </div>
-                            <div class="form-check form-check-inline">
-                                <input class="form-check-input" type="checkbox" id="defectedNo" value="no" name="defected">
-                                <label class="form-check-label" for="defectedNo">No</label>
-                            </div>                            
-                        </div>
-                        <div class="form-group">
-                            <label>الاسم / Pressure Reducing Valve </label>
-                            <div class="form-check form-check-inline">
-                                <input class="form-check-input" type="checkbox" id="PRVWorking" value="working" name="pressureReducingValve">
-                                <label class="form-check-label" for="PRVWorking">Working</label>
-                            </div>
-                            <div class="form-check form-check-inline">
-                                <input class="form-check-input" type="checkbox" id="PRVNotWorking" value="notWorking" name="pressureReducingValve">
-                                <label class="form-check-label" for="PRVNotWorking">Not Working</label>
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <label>الهاتف / Sample Size</label>
-                            <input type="text" class="long form-control" value="" name="sampleSize" id="sampleSize" />
-                        </div>
+                        
                     </fieldset>
                     
-                    <!-- VISUAL TEST DETAILS -->
-                    <fieldset class="row">
+                    <!-- TEST DATA DETAILS -->
+                    <fieldset class="row mt-3">
                         <legend>بيانات الشخص المسؤول / Visual Test Data</legend>
-                        <div class="col-md-12">
+
+                        <div class="col-md-12 mt-3">
+                            <div class="alert alert-danger d-none notification-box" role="alert">
+                                This is a danger alert—check it out!
+                            </div>
                             <table class="table table-bordered">
                                 <thead>
-                                    <tr>
-                                        <td colspan="2">Serial No.</td>
-                                        <td></td>
-                                        <td></td>
-                                        <td></td>
-                                        <td></td>
-                                        <td></td>
-                                        <td></td>
-                                        <td></td>
-                                        <td></td>
-                                        <td></td>
-                                        <td></td>
+                                    <tr class="sample-number-row">
+                                        <td colspan="2">Serial/Sample No.</td>
+                                        <td><input type="text" name="sampleNumber_1" value=""></td>
+                                        <td><input type="text" name="sampleNumber_2" value=""></td>
+                                        <td><input type="text" name="sampleNumber_3" value=""></td>
+                                        <td><input type="text" name="sampleNumber_4" value=""></td>
+                                        <td><input type="text" name="sampleNumber_5" value=""></td>
+                                        <td><input type="text" name="sampleNumber_6" value=""></td>
+                                        <td><input type="text" name="sampleNumber_7" value=""></td>
+                                        <td><input type="text" name="sampleNumber_8" value=""></td>
+                                        <td><input type="text" name="sampleNumber_9" value=""></td>
+                                        <td><input type="text" name="sampleNumber_10" value=""></td>
                                     </tr>
                                     <tr>
                                         <td colspan="2">Test Point</td>
@@ -155,178 +213,181 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <tr>
+                                    <tr class="0-mmhg-row">
                                         <td colspan="2">0 mmHg</td>
-                                        <td> <input type="text" name="" id=""> </td>
-                                        <td> <input type="text" name="" id=""></td>
-                                        <td><input type="text" name="" id=""></td>
-                                        <td><input type="text" name="" id=""></td>
-                                        <td><input type="text" name="" id=""></td>
-                                        <td><input type="text" name="" id=""></td>
-                                        <td><input type="text" name="" id=""></td>
-                                        <td><input type="text" name="" id=""></td>
-                                        <td><input type="text" name="" id=""></td>
-                                        <td><input type="text" name="" id=""></td>
+                                        <td><input type="text" name="mmHg_0_1" ></td>
+                                        <td><input type="text" name="mmHg_0_2" ></td>
+                                        <td><input type="text" name="mmHg_0_3" ></td>
+                                        <td><input type="text" name="mmHg_0_4" ></td>
+                                        <td><input type="text" name="mmHg_0_5" ></td>
+                                        <td><input type="text" name="mmHg_0_6" ></td>
+                                        <td><input type="text" name="mmHg_0_7" ></td>
+                                        <td><input type="text" name="mmHg_0_8" ></td>
+                                        <td><input type="text" name="mmHg_0_9" ></td>
+                                        <td><input type="text" name="mmHg_0_10" ></td>
                                     </tr>
-                                    <tr>
+                                    <tr class="50-mmhg-row">
                                         <td colspan="2">50 mmHg</td>
-                                        <td> <input type="text" name="" id=""> </td>
-                                        <td> <input type="text" name="" id=""></td>
-                                        <td><input type="text" name="" id=""></td>
-                                        <td><input type="text" name="" id=""></td>
-                                        <td><input type="text" name="" id=""></td>
-                                        <td><input type="text" name="" id=""></td>
-                                        <td><input type="text" name="" id=""></td>
-                                        <td><input type="text" name="" id=""></td>
-                                        <td><input type="text" name="" id=""></td>
-                                        <td><input type="text" name="" id=""></td>
+                                        <td><input type="text" name="mmHg_50_1" > </td>
+                                        <td><input type="text" name="mmHg_50_2" ></td>
+                                        <td><input type="text" name="mmHg_50_3" ></td>
+                                        <td><input type="text" name="mmHg_50_4" ></td>
+                                        <td><input type="text" name="mmHg_50_5" ></td>
+                                        <td><input type="text" name="mmHg_50_6" ></td>
+                                        <td><input type="text" name="mmHg_50_7" ></td>
+                                        <td><input type="text" name="mmHg_50_8" ></td>
+                                        <td><input type="text" name="mmHg_50_9" ></td>
+                                        <td><input type="text" name="mmHg_50_10" ></td>
                                     </tr>
-                                    <tr>
+                                    <tr class="100-mmhg-row">
                                         <td colspan="2">100 mmHg</td>
-                                        <td> <input type="text" name="" id=""> </td>
-                                        <td> <input type="text" name="" id=""></td>
-                                        <td><input type="text" name="" id=""></td>
-                                        <td><input type="text" name="" id=""></td>
-                                        <td><input type="text" name="" id=""></td>
-                                        <td><input type="text" name="" id=""></td>
-                                        <td><input type="text" name="" id=""></td>
-                                        <td><input type="text" name="" id=""></td>
-                                        <td><input type="text" name="" id=""></td>
-                                        <td><input type="text" name="" id=""></td>
+                                        <td><input type="text" name="mmHg_100_1" ></td>
+                                        <td><input type="text" name="mmHg_100_2" ></td>
+                                        <td><input type="text" name="mmHg_100_3" ></td>
+                                        <td><input type="text" name="mmHg_100_4" ></td>
+                                        <td><input type="text" name="mmHg_100_5" ></td>
+                                        <td><input type="text" name="mmHg_100_6" ></td>
+                                        <td><input type="text" name="mmHg_100_7" ></td>
+                                        <td><input type="text" name="mmHg_100_8" ></td>
+                                        <td><input type="text" name="mmHg_100_9" ></td>
+                                        <td><input type="text" name="mmHg_100_10" ></td>
                                     </tr>
-                                    <tr>
+                                    <tr class="150-mmhg-row">
                                         <td colspan="2">150 mmHg</td>
-                                        <td> <input type="text" name="" id=""> </td>
-                                        <td> <input type="text" name="" id=""></td>
-                                        <td><input type="text" name="" id=""></td>
-                                        <td><input type="text" name="" id=""></td>
-                                        <td><input type="text" name="" id=""></td>
-                                        <td><input type="text" name="" id=""></td>
-                                        <td><input type="text" name="" id=""></td>
-                                        <td><input type="text" name="" id=""></td>
-                                        <td><input type="text" name="" id=""></td>
-                                        <td><input type="text" name="" id=""></td>
+                                        <td><input type="text" name="mmHg_150_1" ></td>
+                                        <td><input type="text" name="mmHg_150_2" ></td>
+                                        <td><input type="text" name="mmHg_150_3" ></td>
+                                        <td><input type="text" name="mmHg_150_4" ></td>
+                                        <td><input type="text" name="mmHg_150_5" ></td>
+                                        <td><input type="text" name="mmHg_150_6" ></td>
+                                        <td><input type="text" name="mmHg_150_7" ></td>
+                                        <td><input type="text" name="mmHg_150_8" ></td>
+                                        <td><input type="text" name="mmHg_150_9" ></td>
+                                        <td><input type="text" name="mmHg_150_10" ></td>
                                     </tr>
-                                    <tr>
+                                    <tr class="200-mmhg-row">
                                         <td colspan="2">200 mmHg</td>
-                                        <td> <input type="text" name="" id=""> </td>
-                                        <td> <input type="text" name="" id=""></td>
-                                        <td><input type="text" name="" id=""></td>
-                                        <td><input type="text" name="" id=""></td>
-                                        <td><input type="text" name="" id=""></td>
-                                        <td><input type="text" name="" id=""></td>
-                                        <td><input type="text" name="" id=""></td>
-                                        <td><input type="text" name="" id=""></td>
-                                        <td><input type="text" name="" id=""></td>
-                                        <td><input type="text" name="" id=""></td>
+                                        <td><input type="text" name="mmHg_200_1" ></td>
+                                        <td><input type="text" name="mmHg_200_2" ></td>
+                                        <td><input type="text" name="mmHg_200_3" ></td>
+                                        <td><input type="text" name="mmHg_200_4" ></td>
+                                        <td><input type="text" name="mmHg_200_5" ></td>
+                                        <td><input type="text" name="mmHg_200_6" ></td>
+                                        <td><input type="text" name="mmHg_200_7" ></td>
+                                        <td><input type="text" name="mmHg_200_8" ></td>
+                                        <td><input type="text" name="mmHg_200_9" ></td>
+                                        <td><input type="text" name="mmHg_200_10" ></td>
                                     </tr>
-                                    <tr>
+                                    <tr class="250-mmhg-row">
                                         <td colspan="2">250 mmHg</td>
-                                        <td> <input type="text" name="" id=""> </td>
-                                        <td> <input type="text" name="" id=""></td>
-                                        <td><input type="text" name="" id=""></td>
-                                        <td><input type="text" name="" id=""></td>
-                                        <td><input type="text" name="" id=""></td>
-                                        <td><input type="text" name="" id=""></td>
-                                        <td><input type="text" name="" id=""></td>
-                                        <td><input type="text" name="" id=""></td>
-                                        <td><input type="text" name="" id=""></td>
-                                        <td><input type="text" name="" id=""></td>
+                                        <td><input type="text" name="mmHg_250_1" ></td>
+                                        <td><input type="text" name="mmHg_250_2" ></td>
+                                        <td><input type="text" name="mmHg_250_3" ></td>
+                                        <td><input type="text" name="mmHg_250_4" ></td>
+                                        <td><input type="text" name="mmHg_250_5" ></td>
+                                        <td><input type="text" name="mmHg_250_6" ></td>
+                                        <td><input type="text" name="mmHg_250_7" ></td>
+                                        <td><input type="text" name="mmHg_250_8" ></td>
+                                        <td><input type="text" name="mmHg_250_9" ></td>
+                                        <td><input type="text" name="mmHg_250_10" ></td>
                                     </tr>
-                                    <tr>
+                                    <tr class="air-leakage-row prr-p100-row-1">
                                         <td rowspan="6" style="vertical-align: middle;">Air Leakage Test</td>
                                         <td rowspan="3">Pressure Reduction Rate** at P100 (mmHg/min)</td>
-                                        <td> <input type="text" name="" id=""> </td>
-                                        <td> <input type="text" name="" id=""></td>
-                                        <td><input type="text" name="" id=""></td>
-                                        <td><input type="text" name="" id=""></td>
-                                        <td><input type="text" name="" id=""></td>
-                                        <td><input type="text" name="" id=""></td>
-                                        <td><input type="text" name="" id=""></td>
-                                        <td><input type="text" name="" id=""></td>
-                                        <td><input type="text" name="" id=""></td>
-                                        <td><input type="text" name="" id=""></td>
+                                        <td><input type="text" name="prr_p100_row1_1" > </td>
+                                        <td><input type="text" name="prr_p100_row1_2" ></td>
+                                        <td><input type="text" name="prr_p100_row1_3" ></td>
+                                        <td><input type="text" name="prr_p100_row1_4" ></td>
+                                        <td><input type="text" name="prr_p100_row1_5" ></td>
+                                        <td><input type="text" name="prr_p100_row1_6" ></td>
+                                        <td><input type="text" name="prr_p100_row1_7" ></td>
+                                        <td><input type="text" name="prr_p100_row1_8" ></td>
+                                        <td><input type="text" name="prr_p100_row1_9" ></td>
+                                        <td><input type="text" name="prr_p100_row1_10" ></td>
                                     </tr>
-                                    <tr>
-                                        <td> <input type="text" name="" id=""> </td>
-                                        <td> <input type="text" name="" id=""></td>
-                                        <td><input type="text" name="" id=""></td>
-                                        <td><input type="text" name="" id=""></td>
-                                        <td><input type="text" name="" id=""></td>
-                                        <td><input type="text" name="" id=""></td>
-                                        <td><input type="text" name="" id=""></td>
-                                        <td><input type="text" name="" id=""></td>
-                                        <td><input type="text" name="" id=""></td>
-                                        <td><input type="text" name="" id=""></td>
+                                    <tr class="prr-p100-row-2">
+                                        <td><input type="text" name="prr_p100_row2_1" > </td>
+                                        <td><input type="text" name="prr_p100_row2_2" ></td>
+                                        <td><input type="text" name="prr_p100_row2_3" ></td>
+                                        <td><input type="text" name="prr_p100_row2_4" ></td>
+                                        <td><input type="text" name="prr_p100_row2_5" ></td>
+                                        <td><input type="text" name="prr_p100_row2_6" ></td>
+                                        <td><input type="text" name="prr_p100_row2_7" ></td>
+                                        <td><input type="text" name="prr_p100_row2_8" ></td>
+                                        <td><input type="text" name="prr_p100_row2_9" ></td>
+                                        <td><input type="text" name="prr_p100_row2_10" ></td>
                                     </tr>
-                                    <tr>
-                                        <td> <input type="text" name="" id=""> </td>
-                                        <td> <input type="text" name="" id=""></td>
-                                        <td><input type="text" name="" id=""></td>
-                                        <td><input type="text" name="" id=""></td>
-                                        <td><input type="text" name="" id=""></td>
-                                        <td><input type="text" name="" id=""></td>
-                                        <td><input type="text" name="" id=""></td>
-                                        <td><input type="text" name="" id=""></td>
-                                        <td><input type="text" name="" id=""></td>
-                                        <td><input type="text" name="" id=""></td>
+                                    <tr class="prr-p100-row-3">
+                                        <td><input type="text" name="prr_p100_row3_1" > </td>
+                                        <td><input type="text" name="prr_p100_row3_2" ></td>
+                                        <td><input type="text" name="prr_p100_row3_3" ></td>
+                                        <td><input type="text" name="prr_p100_row3_4" ></td>
+                                        <td><input type="text" name="prr_p100_row3_5" ></td>
+                                        <td><input type="text" name="prr_p100_row3_6" ></td>
+                                        <td><input type="text" name="prr_p100_row3_7" ></td>
+                                        <td><input type="text" name="prr_p100_row3_8" ></td>
+                                        <td><input type="text" name="prr_p100_row3_9" ></td>
+                                        <td><input type="text" name="prr_p100_row3_10" ></td>
                                     </tr>
-                                    <tr>
+                                    <tr class="prr-p250-row-1">
                                         <td rowspan="3">Pressure Reduction Rate** at P250 (mmHg/min)</td>
-                                        <td> <input type="text" name="" id=""> </td>
-                                        <td> <input type="text" name="" id=""></td>
-                                        <td><input type="text" name="" id=""></td>
-                                        <td><input type="text" name="" id=""></td>
-                                        <td><input type="text" name="" id=""></td>
-                                        <td><input type="text" name="" id=""></td>
-                                        <td><input type="text" name="" id=""></td>
-                                        <td><input type="text" name="" id=""></td>
-                                        <td><input type="text" name="" id=""></td>
-                                        <td><input type="text" name="" id=""></td>
+                                        <td><input type="text" name="prr_p250_row1_1" ></td>
+                                        <td><input type="text" name="prr_p250_row1_2" ></td>
+                                        <td><input type="text" name="prr_p250_row1_3" ></td>
+                                        <td><input type="text" name="prr_p250_row1_4" ></td>
+                                        <td><input type="text" name="prr_p250_row1_5" ></td>
+                                        <td><input type="text" name="prr_p250_row1_6" ></td>
+                                        <td><input type="text" name="prr_p250_row1_7" ></td>
+                                        <td><input type="text" name="prr_p250_row1_8" ></td>
+                                        <td><input type="text" name="prr_p250_row1_9" ></td>
+                                        <td><input type="text" name="prr_p250_row1_10" ></td>
                                     </tr>
-                                    <tr>
-                                        <td> <input type="text" name="" id=""> </td>
-                                        <td> <input type="text" name="" id=""></td>
-                                        <td><input type="text" name="" id=""></td>
-                                        <td><input type="text" name="" id=""></td>
-                                        <td><input type="text" name="" id=""></td>
-                                        <td><input type="text" name="" id=""></td>
-                                        <td><input type="text" name="" id=""></td>
-                                        <td><input type="text" name="" id=""></td>
-                                        <td><input type="text" name="" id=""></td>
-                                        <td><input type="text" name="" id=""></td>
+                                    <tr class="prr-p250-row-2">
+                                        <td><input type="text" name="prr_p250_row2_1" ></td>
+                                        <td><input type="text" name="prr_p250_row2_2" ></td>
+                                        <td><input type="text" name="prr_p250_row2_3" ></td>
+                                        <td><input type="text" name="prr_p250_row2_4" ></td>
+                                        <td><input type="text" name="prr_p250_row2_5" ></td>
+                                        <td><input type="text" name="prr_p250_row2_6" ></td>
+                                        <td><input type="text" name="prr_p250_row2_7" ></td>
+                                        <td><input type="text" name="prr_p250_row2_8" ></td>
+                                        <td><input type="text" name="prr_p250_row2_9" ></td>
+                                        <td><input type="text" name="prr_p250_row2_10" ></td>
                                     </tr>
-                                    <tr>
-                                        <td> <input type="text" name="" id=""> </td>
-                                        <td> <input type="text" name="" id=""></td>
-                                        <td><input type="text" name="" id=""></td>
-                                        <td><input type="text" name="" id=""></td>
-                                        <td><input type="text" name="" id=""></td>
-                                        <td><input type="text" name="" id=""></td>
-                                        <td><input type="text" name="" id=""></td>
-                                        <td><input type="text" name="" id=""></td>
-                                        <td><input type="text" name="" id=""></td>
-                                        <td><input type="text" name="" id=""></td>
+                                    <tr class="prr-p250-row-3">
+                                        <td><input type="text" name="prr_p250_row3_1" ></td>
+                                        <td><input type="text" name="prr_p250_row3_2" ></td>
+                                        <td><input type="text" name="prr_p250_row3_3" ></td>
+                                        <td><input type="text" name="prr_p250_row3_4" ></td>
+                                        <td><input type="text" name="prr_p250_row3_5" ></td>
+                                        <td><input type="text" name="prr_p250_row3_6" ></td>
+                                        <td><input type="text" name="prr_p250_row3_7" ></td>
+                                        <td><input type="text" name="prr_p250_row3_8" ></td>
+                                        <td><input type="text" name="prr_p250_row3_9" ></td>
+                                        <td><input type="text" name="prr_p250_row3_10" ></td>
                                     </tr>
-                                    <tr>
+                                    <tr class="result-status-row">
                                         <td colspan="2"> Pass / Fail </td>
-                                        <td> <input type="text" name="" id=""> </td>
-                                        <td> <input type="text" name="" id=""></td>
-                                        <td><input type="text" name="" id=""></td>
-                                        <td><input type="text" name="" id=""></td>
-                                        <td><input type="text" name="" id=""></td>
-                                        <td><input type="text" name="" id=""></td>
-                                        <td><input type="text" name="" id=""></td>
-                                        <td><input type="text" name="" id=""></td>
-                                        <td><input type="text" name="" id=""></td>
-                                        <td><input type="text" name="" id=""></td>
+                                        <td><input type="text" name="resultStatus_1" readonly> </td>
+                                        <td><input type="text" name="resultStatus_2" readonly></td>
+                                        <td><input type="text" name="resultStatus_3" readonly></td>
+                                        <td><input type="text" name="resultStatus_4" readonly></td>
+                                        <td><input type="text" name="resultStatus_5" readonly></td>
+                                        <td><input type="text" name="resultStatus_6" readonly></td>
+                                        <td><input type="text" name="resultStatus_7" readonly></td>
+                                        <td><input type="text" name="resultStatus_8" readonly></td>
+                                        <td><input type="text" name="resultStatus_9" readonly></td>
+                                        <td><input type="text" name="resultStatus_10" readonly></td>
                                     </tr>
                                 </tbody>
                             </table>
                         </div>
+                        <div class="col-md-12 mt-3">
+                            <button class="btn btn-primary check-result">Check MPE</button>
+                        </div>
                     </fieldset>
 
-                    <fieldset>
+                    <fieldset class="row mt-3">
                         <legend>بيانات الشخص المسؤول / Remarks</legend>
                         <div class="input-group mb-3">
                             <textarea class="form-control" aria-label="With textarea" name="remarks"></textarea>
@@ -338,7 +399,7 @@
                             </div>
                             <div class="form-group col-md-6 mb-3">
                                 <label>تاريخ التحقق / Signature</label>
-                                <input type="text" class="form-control" id="signature" name="signature"/>
+                                <input type="text" class="form-control" id="carriedBySignature" name="carriedBySignature"/>
                             </div>
                             <div class="form-group col-md-6 mb-3">
                                 <label>تاريخ التحقق / Date</label>
@@ -352,16 +413,24 @@
                             </div>
                             <div class="form-group col-md-6 mb-3">
                                 <label>تاريخ التحقق / Signature</label>
-                                <input type="text" class="form-control" id="signature" name="signature"/>
+                                <input type="text" class="form-control" id="approvedBySignature" name="approvedBySignature"/>
                             </div>
                             <div class="form-group col-md-6 mb-3">
                                 <label>تاريخ التحقق / Date</label>
                                 <input type="text" class="form-control" id="approvedByDate" name="approvedByDate"/>
                             </div>
-                        </div>                         
+                        </div>  
+                        <div class="row">
+                            <div class="col-md-12">
+                                <input type="submit" value="Print" class="btn btn-primary" id="preparePDF">
+                                <input type="submit" value="Save" class="btn btn-primary" id="saveForm">
+                            </div>
+                        </div>                       
                     </fieldset>
                 </div>
             </section>
         </div>
+        <script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
+        <script src="./manometer-validation.js"></script>
     </body>
 </html>
