@@ -37,6 +37,13 @@
             table.table tr td input {
                 width: 100%;
             }
+            .visual-test-details input[type='radio']{
+                /* background-color: #c2986b; */
+                background-color: #928d88;
+            }
+            .market-sub-options{
+                display: none;
+            }
         </style>
     </head>
     <body>
@@ -89,6 +96,16 @@
                             <label>عينات أسواق / Customs </label>
                             <input type="checkbox" name="sampleSource" id="customs"  value="customs" class="sample-source-checkbox"/>
                         </div>
+                        <div class="col-md-12 market-sub-options">
+                            <div class="stationType">
+                                <label>محل إطارات / Private:</label>
+                                <input type="checkbox" name="sampleSubSource" id="private" value="private" class="sample-source-checkbox"/>
+                            </div>
+                            <div class="stationType">
+                                <label>عينات أسواق / Government </label>
+                                <input type="checkbox" name="sampleSubSource" id="government"  value="government" class="sample-source-checkbox"/>
+                            </div>
+                        </div>
                         <div class="stationType">
                             <label> رقم الرخصة / Purchase Order No: </label>
                             <input type="text" name="purchaseOrderNumber" id="purchaseOrderNumber" class="long form-control"/>
@@ -100,7 +117,7 @@
                     </fieldset>
 
                     <!-- VISUAL TEST DETAILS -->
-                    <fieldset class="row mt-3">
+                    <fieldset class="row mt-3 visual-test-details">
                         <legend>بيانات الشخص المسؤول / Visual Test </legend>
                         <div class="col-md-12">
                             <div class="form-group row mt-3">
@@ -383,7 +400,7 @@
                             </table>
                         </div>
                         <div class="col-md-12 mt-3">
-                            <button class="btn btn-primary check-result">Check MPE</button>
+                            <a href="javascript:;" class="btn btn-primary check-result">Check MPE</a>
                         </div>
                     </fieldset>
 
@@ -431,6 +448,7 @@
             </section>
         </div>
         <script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
+        <script src="./notify.js"></script>
         <script src="./manometer-validation.js"></script>
     </body>
 </html>
