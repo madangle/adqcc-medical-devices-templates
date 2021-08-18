@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Survey </title>
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap" rel="stylesheet">
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+        <style>
+
+        </style>
+        <script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
+        <script type="text/javascript">
+            $(document).ready(function(){
+                
+                function addOption(elementId, optionText, optionValue) {        
+                    $('#'+elementId+'').append(`<option value="${optionValue}">${optionText}</option>`);
+                }
+
+                function getMainCriterias() {
+        	        var url = "https://jawdah.qcc.abudhabi.ae/en/_api/Web/Lists(guid'9a60a036-6005-4b1c-b2b4-57fcfcf85862')/Items";
+                    try {
+                        $.ajax ({  
+                            url:  url,  
+                            method:"GET",
+                            headers:{  
+                                "Accept": "application/json;odata=verbose",  
+                                "Content-Type": "application/json;odata=verbose",
+                                "IF-MATCH": "*",  
+                                "X-HTTP-Method": null  
+                            },  
+                            cache: false,  
+                            success: function(data) {  
+                                console.log(data);
+                                results = data.d.results;
+                                console.log(results);
+                                results.forEach(function (criteria) {
+                                    console.log(criteria);
+                                    var element = criteria.Element;
+                                    console.log(element);
+                                    addOption("mainCriteria", criteria.Element, criteria.GUID);
+                                });
+                            },  
+                            error: function(data) {  
+                                console.log(data)
+                            }  
+                        });  
+                    }
+                    catch(e) {
+                        alert(e);
+                    }
+                }
+                getMainCriterias();
+            })
+        </script>
+    </head>
+    <body>
+        <div class="container">
+            <div class="row mt-3">
+                <div class="col-md12">
+                    <h2>Create Survey</h2>
+                </div>
+            </div>
+            <div class="mb-3">
+                <label for="mainCriteria" class="form-label">Main Criteria</label>
+                <select id="mainCriteria" class="form-select" name="main_criteria">
+                  <option>Criteria 1</option>
+                  <option>Criteria 1</option>
+                  <option>Criteria 1</option>
+                  <option>Criteria 1</option>
+                </select>
+            </div>
+            <div class="mb-3">
+                <label for="element" class="form-label">Element</label>
+                <select id="element" class="form-select" name="element">
+                  <option>Element 1</option>
+                  <option>Element 1</option>
+                  <option>Element 1</option>
+                  <option>Element 1</option>
+                </select>
+            </div>
+            <div class="mb-3">
+                <label for="subject" class="form-label">Subject</label>
+                <select id="subject" class="form-select" name="subject">
+                  <option>Subject 1</option>
+                  <option>Subject 1</option>
+                  <option>Subject 1</option>
+                  <option>Subject 1</option>
+                </select>
+            </div>
+            <div class="mb-3">
+                <a href="javascript:;" class="btn btn-primary mb-3 float-end">Add Question</a>
+                <label for="questions" class="form-label">Questions</label>
+                <input type="text" class="form-control mb-3" id="question-1" name="question_1" placeholder="Enter Question">
+                <input type="text" class="form-control mb-3" id="question-2" name="question_2" placeholder="Enter Question">
+                <input type="text" class="form-control mb-3" id="question-3" name="question_3" placeholder="Enter Question">
+            </div>
+            <div class="mb-3">
+                <button class="btn btn-primary">Submit</button>
+            </div>
+        </div>
+    </body>
+</html>
